@@ -32,8 +32,7 @@
         specialArgs = inputs;
 
         modules = [
-          ./configuration.nix
-          ./hardware-configuration.nix
+          ./system/oo-laptop
 
           {
             nix.settings.trusted-users = [ "oo-infty" ];
