@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./zsh
+  ];
+
   home.username = "oo-infty";
   home.homeDirectory = "/home/oo-infty";
 

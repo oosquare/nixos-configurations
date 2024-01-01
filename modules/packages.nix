@@ -4,6 +4,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    # Basic tools
     wget
     curl
     helix
@@ -13,4 +14,6 @@
     # Fonts
     source-han-sans
   ];
+
+  programs.zsh.enable = true;
 }

@@ -35,6 +35,7 @@
 
   users.users.oo-infty = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     extraGroups = [ "wheel" "networkmanager" ];
   };
  
