@@ -29,22 +29,13 @@
     };
   };
 
-  networking.hostName = "oo-laptop"; # Define your hostname.
+  networking.hostName = "oo-laptop";
 
   time.timeZone = "Asia/Shanghai";
 
   users.users.oo-infty = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      firefox
-      ripgrep
-      fd
-      qq
-      fzf
-      neofetch
-      bat
-    ];
+    extraGroups = [ "wheel" "networkmanager" ];
   };
  
   environment.variables = {
