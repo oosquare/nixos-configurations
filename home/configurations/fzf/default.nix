@@ -14,7 +14,9 @@
       "--scroll-off=5"
       "--cycle"
       "--preview-window=border-left"
-      "--preview='zsh .scripts/executables/preview.sh {}'"
+      "--preview='zsh ~/.scripts/executables/preview.sh {}'"
     ];
   };
+
+  home.file.".scripts/utilities/fzf/completions.sh".source = ./completions.sh;
 }

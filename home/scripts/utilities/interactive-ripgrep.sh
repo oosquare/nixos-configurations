@@ -1,13 +1,3 @@
-export FD_DEFAULT_OPTS='--follow --color=always -E ".git" -E "build" -E "target" -E "node_modules"'
-
-function _fzf_compgen_path() {
-    eval "fd $FD_DEFAULT_OPTS . \"$1\""
-}
-
-function _fzf_compgen_dir() {
-    eval "fd --type d $FD_DEFAULT_OPTS . \"$1\""
-}
-
 function rgi() {
     RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
     INITIAL_QUERY="${*:-}"

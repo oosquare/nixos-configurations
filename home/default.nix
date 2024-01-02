@@ -3,9 +3,7 @@
 {
   imports = [
     ./scripts
- 
-    ./zsh
-    ./fzf
+    ./configurations
   ];
 
   home.username = "oo-infty";
