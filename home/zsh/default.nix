@@ -8,6 +8,8 @@
     syntaxHighlighting.enable = true;
 
     initExtra = ''
+      source ~/.scripts/utilities/**
+
       export PS1="
       %{%F{226}%}%n%{%F{220}%}@%{%F{214}%}%m %{%F{45}%}%1~
       %{%f%}> "

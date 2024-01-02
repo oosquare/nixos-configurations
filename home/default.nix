@@ -2,21 +2,25 @@
 
 {
   imports = [
+    ./scripts
+ 
     ./zsh
+    ./fzf
   ];
 
   home.username = "oo-infty";
   home.homeDirectory = "/home/oo-infty";
 
   home.packages = with pkgs; [
-   firefox
-   ripgrep
-   fd
-   qq
-   fzf
-   neofetch
-   bat
-   foot
+    firefox
+    ripgrep
+    fd
+    qq
+    neofetch
+    bat
+    foot
+    tree
+    unzip
   ];
 
   programs.git = {
