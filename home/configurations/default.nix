@@ -3,6 +3,7 @@
 {
   imports = [
     ./fzf
+    ./helix
     ./zsh
   ];
 }
