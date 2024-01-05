@@ -9,10 +9,13 @@
     curl
     helix
     htop
-    git
 
     # Fonts
     source-han-sans
+
+    # Development
+    git
+    gnumake
   ];
 
   programs.zsh.enable = true;

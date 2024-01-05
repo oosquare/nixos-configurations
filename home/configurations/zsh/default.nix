@@ -12,8 +12,7 @@
       source ~/.scripts/utilities/**
 
       # Set prompt style
-      export PS1="
-      %{%F{226}%}%n%{%F{220}%}@%{%F{214}%}%m %{%F{45}%}%~
+      export PS1="%{%F{226}%}%n%{%F{220}%}@%{%F{214}%}%m %{%F{45}%}%~
       %{%f%}> "
 
       export RPROMPT="%F{red}%(?..%?)%f"
