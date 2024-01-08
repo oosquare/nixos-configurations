@@ -10,9 +10,6 @@
     helix
     htop
 
-    # Fonts
-    source-han-sans
-
     # Development
     git
     gnumake
