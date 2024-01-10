@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   # X11
@@ -18,4 +18,11 @@
   ];
 
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+
+  # Hyprland
+  programs.hyprland = {
+    enable = true;
+    # Use development version
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  };
 }
