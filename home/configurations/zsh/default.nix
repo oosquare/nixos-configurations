@@ -9,7 +9,11 @@
 
     initExtra = ''
       # Load essential functions and variables
-      source ~/.scripts/utilities/**
+      for file in ~/.scripts/utilities/**/*.sh; do
+          if [[ -f $file ]]; then
+              source $file
+          fi
+      done
 
       # Set prompt style
       export PS1="%{%F{226}%}%n%{%F{220}%}@%{%F{214}%}%m %{%F{45}%}%~
