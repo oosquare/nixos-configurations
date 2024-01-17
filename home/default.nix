@@ -19,6 +19,7 @@
     foot
     tree
     unzip
+    logseq
   ];
 
   programs.git = {

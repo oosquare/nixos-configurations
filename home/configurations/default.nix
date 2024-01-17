@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./fontconfig
     ./fzf
     ./helix
     ./zsh
