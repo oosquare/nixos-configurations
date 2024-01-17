@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./atuin
     ./fontconfig
     ./fzf
     ./helix
