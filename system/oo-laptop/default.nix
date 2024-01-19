@@ -2,13 +2,17 @@
 
 {
   imports = [
+    # Common modules
     ../../modules/i18n.nix
     ../../modules/desktop.nix
     ../../modules/fonts.nix
     ../../modules/packages.nix
     ../../modules/networking.nix
     ../../modules/services.nix
+
+    # System-specific modules
     ./hardware-configuration.nix
+    ./containers.nix
   ];
 
   # Nix settings
