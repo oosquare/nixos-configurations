@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
-	# CUPS
-	# services.printing.enable = true;
+  # CUPS
+  # services.printing.enable = true;
 
-	# Sound
+  # Sound
   sound.enable = true;
 
   services.pipewire = {
