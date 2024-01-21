@@ -20,6 +20,8 @@
     tree
     unzip
     logseq
+    keepassxc
+    vscode
   ];
 
   programs.git = {
