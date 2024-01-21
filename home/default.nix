@@ -7,7 +7,7 @@
   ];
 
   home.username = "oo-infty";
-  home.homeDirectory = "/home/oo-infty";
+  home.homeDirectory = "/home/${config.home.username}";
 
   home.packages = with pkgs; [
     firefox

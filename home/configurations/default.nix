@@ -6,6 +6,7 @@
     ./fontconfig
     ./fzf
     ./helix
+    ./xdg
     ./zsh
   ];
 }
