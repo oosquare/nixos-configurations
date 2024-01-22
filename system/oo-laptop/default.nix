@@ -11,7 +11,7 @@
     ../../modules/services.nix
 
     # System-specific modules
-    ./hardware-configuration.nix
+    ./hardware.nix
     ./containers.nix
   ];
 
@@ -25,20 +25,6 @@
     automatic = true;
     dates = "daily";
     options = "--delete-older-than 7d";
-  };
-
-  # GRUB 2
-  boot.loader = {
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/efi";
-    };
-
-    grub = {
-      device = "nodev";
-      efiSupport = true;
-      useOSProber = true;
-    };
   };
 
   networking.hostName = "oo-laptop";
