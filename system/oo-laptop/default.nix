@@ -4,7 +4,7 @@
   imports = [
     # Common modules
     ../../modules/i18n.nix
-    ../../modules/desktop.nix
+    ../../modules/desktop
     ../../modules/fonts.nix
     ../../modules/packages.nix
     ../../modules/networking.nix

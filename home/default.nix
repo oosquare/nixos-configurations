@@ -22,6 +22,8 @@
     logseq
     keepassxc
     vscode
+    listen1
+    telegram-desktop
   ];
 
   programs.git = {

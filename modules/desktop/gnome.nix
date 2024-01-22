@@ -1,10 +1,8 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, flags, ... }:
 
-{
-  # X11
+if flags.desktop.gnome.enable then {
   services.xserver.enable = true;
 
-  # GNOME
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
@@ -18,11 +16,4 @@
   ];
 
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
-
-  # Hyprland
-  programs.hyprland = {
-    enable = true;
-    # Use development version
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  };
-}
+} else {}
