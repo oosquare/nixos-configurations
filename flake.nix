@@ -30,19 +30,18 @@
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
     constants = import ./global/constants.nix;
-    flags = import ./global/flags.nix;
-  in {
-    nixosConfigurations = {
-      "oo-laptop" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+    globalFlags = import ./global/flags.nix;
+
+    buildSystem = { system, hostname }: let
+      flags = globalFlags // (import ./system/${hostname}/flags.nix);
+    in
+      nixpkgs.lib.nixosSystem {
+        inherit system;
         specialArgs = { inherit inputs constants flags; };
 
         modules = [
-          ./system/oo-laptop
-
-          {
-            nix.settings.trusted-users = [ constants.username ];
-          }
+          ./system/${hostname}
+          { nix.settings.trusted-users = [ constants.username ]; }
 
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
@@ -51,6 +50,12 @@
             home-manager.extraSpecialArgs = { inherit constants flags; };
           }
         ];
+      };
+  in {
+    nixosConfigurations = {
+      "oo-laptop" = buildSystem {
+        system = "x86_64-linux";
+        hostname = "oo-laptop";
       };
     };
   };
