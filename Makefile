@@ -16,4 +16,4 @@ history:
 	@nix profile history --profile /nix/var/nix/profiles/system
 
 update:
-	@sudo nix flake update
+	@nix flake update
