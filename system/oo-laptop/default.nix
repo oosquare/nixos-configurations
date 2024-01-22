@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, constants, ... }:
 
 {
   imports = [
@@ -45,7 +45,7 @@
 
   time.timeZone = "Asia/Shanghai";
 
-  users.users.oo-infty = {
+  users.users.${constants.username} = {
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [ "wheel" "networkmanager" ];

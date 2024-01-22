@@ -28,23 +28,27 @@
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
+    constants = import ./global/constants.nix;
+    flags = import ./global/flags.nix;
+  in {
     nixosConfigurations = {
       "oo-laptop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs constants flags; };
 
         modules = [
           ./system/oo-laptop
 
           {
-            nix.settings.trusted-users = [ "oo-infty" ];
+            nix.settings.trusted-users = [ constants.username ];
           }
 
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.oo-infty = import ./home;
+            home-manager.users.${constants.username} = import ./home;
+            home-manager.extraSpecialArgs = { inherit constants flags; };
           }
         ];
       };

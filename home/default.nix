@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, constants, ... }:
 
 {
   imports = [
@@ -6,7 +6,7 @@
     ./configurations
   ];
 
-  home.username = "oo-infty";
+  home.username = constants.username;
   home.homeDirectory = "/home/${config.home.username}";
 
   home.packages = with pkgs; [
@@ -25,8 +25,8 @@
   ];
 
   programs.git = {
-    userName = "oo-infty";
-    userEmail = "oo-infty@outlook.com";
+    userName = constants.username;
+    userEmail = constants.email;
   };
 
   home.stateVersion = "24.05";
