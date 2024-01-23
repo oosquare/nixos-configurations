@@ -1,4 +1,4 @@
-theme = "tokyonight_storm_transparent"
+theme = "@%colorscheme-placeholder%@"
 
 [editor]
 line-number = "relative"

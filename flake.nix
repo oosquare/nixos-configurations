@@ -33,7 +33,8 @@
     globalFlags = import ./global/flags.nix;
 
     buildSystem = { system, hostname }: let
-      flags = globalFlags // (import ./system/${hostname}/flags.nix);
+      flags = nixpkgs.lib.attrsets.recursiveUpdate
+        globalFlags (import ./system/${hostname}/flags.nix);
     in
       nixpkgs.lib.nixosSystem {
         inherit system;
