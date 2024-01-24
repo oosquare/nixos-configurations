@@ -53,6 +53,20 @@
 
   services.fstrim.enable = true;
 
+  # Driver
+  services.xserver.videoDrivers = [ "modesetting" ];
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      libva
+      intel-media-driver
+      linux-firmware
+    ];
+  };
+
   # Network
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
