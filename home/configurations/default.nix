@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./alacritty
     ./atuin
     ./fontconfig
     ./fzf
