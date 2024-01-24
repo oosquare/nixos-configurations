@@ -16,14 +16,14 @@
     qq
     neofetch
     bat
-    foot
+    alacritty
     tree
     unzip
     logseq
     keepassxc
     vscode
-    listen1
     telegram-desktop
+    mpv
   ];
 
   programs.git = {
