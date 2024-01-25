@@ -1,3 +1,7 @@
+import = [
+  "~/.config/alacritty/themes/@%colorscheme-placeholder%@.toml"
+]
+
 [window]
 padding = { x = 4, y = 0 }
 decorations = "None"
