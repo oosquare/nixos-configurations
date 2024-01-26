@@ -45,9 +45,7 @@ E = ":quit"
 z = { k = "scroll_down", i = "scroll_up" }
 x = ["move_prev_word_end", "move_next_word_start", "trim_selections"]
 X = "extend_line_below"
-# Alacritty interprets Ctrl-i to Tab. This is an alacritty-specific configuration.
-"A-tab" = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
-# "C-A-i" = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+"C-A-i" = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
 "C-A-k" = ["extend_to_line_bounds", "delete_selection", "paste_after"]
 "A-i" = "expand_selection"
 "A-k" = "shrink_selection"
