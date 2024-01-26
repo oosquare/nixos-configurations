@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1705879479,
-        "narHash": "sha256-ZIohbyly1KOe+8I3gdyNKgVN/oifKdmeI0DzMfytbtg=",
+        "lastModified": 1706221476,
+        "narHash": "sha256-T4b8YafVjHXvtDY8ARec1WrXO8uyyNZOpNgv9yoQy2M=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2d47379ad591bcb14ca95a90b6964b8305f6c913",
+        "rev": "c7ce343d9bf1a329056a4dd5b32ea8cc43b55e15",
         "type": "github"
       },
       "original": {
@@ -23,17 +23,19 @@
     "hyprland": {
       "inputs": {
         "hyprland-protocols": "hyprland-protocols",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "systems": "systems",
         "wlroots": "wlroots",
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1705913207,
-        "narHash": "sha256-donM5hUaCylML0xwRZtH3SBSTBfdo7Ea3hJ+eiGZ/cI=",
+        "lastModified": 1706235970,
+        "narHash": "sha256-AU2wJQfdwfOGh9Y/SXJpm00J98YslTH4x40bk3mP3qI=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "02b4a9bdede8ab0336e2e7ac52b39cab36208bb4",
+        "rev": "72987dee88a0359d42af9f3064a62b934dcd7be0",
         "type": "github"
       },
       "original": {
@@ -91,22 +93,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1705133751,
-        "narHash": "sha256-rCIsyE80jgiOU78gCWN3A0wE0tR2GI5nH6MlS+HaaSQ=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "9b19f5e77dd906cb52dade0b7bd280339d2a1f3d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
         "lastModified": 1705856552,
         "narHash": "sha256-JXfnuEf5Yd6bhMs/uvM67/joxYKoysyE3M2k6T3eWbg=",
         "owner": "NixOS",
@@ -125,7 +111,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "hyprland": "hyprland",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs"
       }
     },
     "systems": {
