@@ -3,11 +3,11 @@
 {
   home.file.".scripts/executables" = {
     source = ./executables;
-		recursive = true;
+    recursive = true;
   };
 
   home.file.".scripts/utilities" = {
     source = ./utilities;
-		recursive = true;
+    recursive = true;
   };
 }
