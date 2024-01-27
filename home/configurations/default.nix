@@ -7,6 +7,7 @@
     ./fontconfig
     ./fzf
     ./helix
+    ./hyprland
     ./xdg
     ./zsh
   ];
