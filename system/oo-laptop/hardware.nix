@@ -51,6 +51,11 @@
 
   swapDevices = [ { device = "/dev/disk/by-uuid/eb6c6178-6a0e-4a7e-a26e-9be4c3555d04"; } ];
 
+  boot.tmp = {
+    useTmpfs = true;
+    tmpfsSize = "100%";
+  };
+
   services.fstrim.enable = true;
 
   # Driver
