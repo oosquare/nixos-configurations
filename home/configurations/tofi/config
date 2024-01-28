@@ -1,0 +1,9 @@
+width = 55%
+height = 45%
+border-width = 2
+outline-width = 0
+result-spacing = 5
+font = monospace
+font-size = 14
+background-color = #000A
+history = true

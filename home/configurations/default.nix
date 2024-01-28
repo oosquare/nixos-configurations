@@ -8,6 +8,7 @@
     ./fzf
     ./helix
     ./hyprland
+    ./tofi
     ./xdg
     ./zsh
   ];

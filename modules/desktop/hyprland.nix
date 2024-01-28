@@ -9,4 +9,9 @@ in {
       then inputs.hyprland.packages.${pkgs.system}.hyprland
       else pkgs.hyprland;
   };
+
+  # Additional packages that enhance Hyprland's functionality
+  environment.systemPackages = with pkgs; [
+    tofi
+  ];
 }
