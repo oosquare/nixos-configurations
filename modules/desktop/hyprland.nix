@@ -13,5 +13,6 @@ in {
   # Additional packages that enhance Hyprland's functionality
   environment.systemPackages = with pkgs; [
     tofi
+    waybar
   ];
 }

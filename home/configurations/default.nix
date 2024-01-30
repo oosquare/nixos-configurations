@@ -9,6 +9,7 @@
     ./helix
     ./hyprland
     ./tofi
+    ./waybar
     ./xdg
     ./zsh
   ];
