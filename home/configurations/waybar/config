@@ -33,9 +33,61 @@
     "bluetooth": {
         "format": " {status}",
         "format-connected": " {num_connections}",
-        "tooltip-format": "Controller: {controller_alias}\nAddress: {controller_address}\nStatus: {status}\n\nNo Connection",
-        "tooltip-format-connected": "Controller: {controller_alias}\nAddress: {controller_address}\nStatus: {status}\n\nConnections:\n{device_enumerate}",
+        "tooltip-format-disabled": "Controller: {controller_alias}\nAddress: {controller_address}\nStatus: Disabled",
+        "tooltip-format-off": "Controller: {controller_alias}\nAddress: {controller_address}\nStatus: Off",
+        "tooltip-format-on": "Controller: {controller_alias}\nAddress: {controller_address}\nStatus: On\n\nNo Connection",
+        "tooltip-format-connected": "Controller: {controller_alias}\nAddress: {controller_address}\nStatus: Connected\n\nConnections:\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias} ({device_address})",
         "tooltip-format-enumerate-connected-battery": "{device_alias} ({device_address}) {device_battery_percentage}%"
+    },
+    "network": {
+        "interval": 5,
+        "format": "{ifname}",
+        "format-wifi": "",
+        "format-ethernet": "󰌗",
+        "format-disconnected": "󰌙",
+        "tooltip-format-disconnected": "Interface: {ifname}\nStatus: Disconnected",
+        "tooltip-format-ethernet": "Interface: {ifname}\nStatus: Ethernet\n\nAddress: {ipaddr}\nGateway: {gwaddr}\nSubnetmask: {netmask}\n\nUpload: {bandwidthUpBytes}\nDownload: {bandwidthDownBytes}",
+        "tooltip-format-wifi": "Interface: {ifname}\nStatus: WiFi\n\nAddress: {ipaddr}\nGateway: {gwaddr}\nSubnetmask: {netmask}\nSSID: {essid}\n\nUpload: {bandwidthUpBytes}\nDownload: {bandwidthDownBytes}\nStrength: {signalStrength}"
+    },
+    "backlight": {
+        "format": "",
+        "tooltip-format": "Backlight: {percent}%"
+    },
+    "battery": {
+        "format": "{icon}",
+        "format-icons": {
+            "default": ["", "", "", "", ""],
+            "plugged": "󱐥",
+            "charging": ">>"
+        },
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "tooltip-format": "Capacity: {capacity}%\nStatus: Battery\nEstimated: {time}",
+        "tooltip-format-full": "Capacity: {capacity}%\nStatus: Full",
+        "tooltip-format-plugged": "Capacity: {capacity}%\nStatus: Plugged",
+        "tooltip-format-charging": "Capacity: {capacity}%\nStatus: Charging\nEstimated: {time}"
+    },
+    "clock": {
+        "interval": 1,
+        "format": "{:%F %T}",
+        "locale": "C",
+        "tooltip-format": "\n<span size='8pt' font='monospace'>{calendar}</span>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
     }
 }
