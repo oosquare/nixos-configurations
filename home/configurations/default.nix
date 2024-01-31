@@ -8,6 +8,8 @@
     ./fzf
     ./helix
     ./hyprland
+    ./mpd
+    ./ncmpcpp
     ./tofi
     ./waybar
     ./xdg
