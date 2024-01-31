@@ -16,8 +16,9 @@
       done
 
       # Set prompt style
-      export PS1="%{%F{226}%}%n%{%F{220}%}@%{%F{214}%}%m %{%F{45}%}%~
-      %{%f%}> "
+      setopt prompt_subst
+      export PS1='%{%F{226}%}%n%{%F{220}%}@%{%F{214}%}%m%{%F{red}%}$(get_branch) %{%F{45}%}%~
+      %{%f%}> '
 
       export RPROMPT="%F{red}%(?..%?)%f"
     '';
@@ -28,4 +29,6 @@
       gl = "git log --pretty='format:%C(yellow)%h %C(blue)%ad %C(white)%s' --graph --date=short";
     };
   };
+
+  home.file.".scripts/utilities/zsh/get-branch.sh".source = ./get-branch.sh;
 }
