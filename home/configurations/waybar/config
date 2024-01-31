@@ -1,0 +1,146 @@
+{
+    // Layout
+    "layer": "top",
+    "position": "top",
+    "spacing": 4,
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [],
+    "modules-right": [
+        "",
+        "tray",
+        "group/dash-board",
+        "group/connections",
+        "group/control-panel",
+        "clock",
+    ],
+
+    // Groups
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "group/dash-board": {
+        "orientation": "inherit",
+        "modules": [
+            "cpu",
+            "temperature",
+            "disk",
+            "memory"
+        ],
+        "drawer": {}
+    },
+    "group/connections": {
+        "orientation": "inherit",
+        "modules": [
+            "network",
+            "bluetooth"
+        ],
+        "drawer": {}
+    },
+    "group/control-panel": {
+        "orientation": "inherit",
+        "modules": [
+            "battery",
+            "idle_inhibitor",
+            "wireplumber",
+            "backlight"
+        ],
+        "drawer": {}
+    },
+
+    // Modules
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "warp-on-scroll": false,
+        "on-scroll-up": "hyprctl dispatch workspace -1",
+        "on-scroll-down": "hyprctl dispatch workspace +1",
+        "persistent-workspaces": {
+            "*": 9
+        }
+    },
+    "hyprland/window": {
+        "format": "{initialTitle}"
+    },
+    "cpu": {
+        "format": " {usage}%"
+    },
+    "memory": {
+        "format": " {used:0.1f}GiB",
+        "tooltip-format": "Total: {total:0.1f}GiB\nUsed: {used:0.1f}GiB\nSwap: {swapUsed:0.1f}GiB\nAvailable: {avail}GiB"
+    },
+    "disk": {
+        "interval": 600,
+        "format": " {used}",
+        "tooltip-format": "Total: {total}\nUsed: {used}\nFree: {free}"
+    },
+    "temperature": {
+        "format": " {temperatureC}°C"
+    },
+    "bluetooth": {
+        "format-disabled": "󰂲 Disabled",
+        "format-off": "󰂲 Off",
+        "format-on": " On",
+        "format-connected": " {num_connections}",
+        "tooltip-format-disabled": "Controller: {controller_alias}\nAddress: {controller_address}\nStatus: Disabled",
+        "tooltip-format-off": "Controller: {controller_alias}\nAddress: {controller_address}\nStatus: Off",
+        "tooltip-format-on": "Controller: {controller_alias}\nAddress: {controller_address}\nStatus: On\n\nNo Connection",
+        "tooltip-format-connected": "Controller: {controller_alias}\nAddress: {controller_address}\nStatus: Connected\n\nConnections:\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias} ({device_address})",
+        "tooltip-format-enumerate-connected-battery": "{device_alias} ({device_address}) {device_battery_percentage}%"
+    },
+    "network": {
+        "interval": 5,
+        "format": "{ifname}",
+        "format-wifi": " {bandwidthTotalBytes}",
+        "format-ethernet": "󰌗",
+        "format-disconnected": "󰌙",
+        "tooltip-format-disconnected": "Interface: {ifname}\nStatus: Disconnected",
+        "tooltip-format-ethernet": "Interface: {ifname}\nStatus: Ethernet\n\nAddress: {ipaddr}\nGateway: {gwaddr}\nSubnetmask: {netmask}\n\nUpload: {bandwidthUpBytes}\nDownload: {bandwidthDownBytes}\nTotal: {bandwidthTotalBytes}",
+        "tooltip-format-wifi": "Interface: {ifname}\nStatus: WiFi\n\nAddress: {ipaddr}\nGateway: {gwaddr}\nSubnetmask: {netmask}\nSSID: {essid}\n\nUpload: {bandwidthUpBytes}\nDownload: {bandwidthDownBytes}\nTotal: {bandwidthTotalBytes}\nStrength: {signalStrength}"
+    },
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟",
+        "format-icons": ["", "", ""],
+        "tooltip-format": "Node: {node_name}\nVolume: {volume}%"
+    },
+    "backlight": {
+        "format": " {percent}%",
+        "tooltip-format": "Backlight: {percent}%"
+    },
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": {
+            "default": ["", "", "", "", ""],
+            "plugged": "󱐥",
+            "charging": ">>"
+        },
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "tooltip-format": "Capacity: {capacity}%\nStatus: Battery\nEstimated: {time}",
+        "tooltip-format-full": "Capacity: {capacity}%\nStatus: Full",
+        "tooltip-format-plugged": "Capacity: {capacity}%\nStatus: Plugged",
+        "tooltip-format-charging": "Capacity: {capacity}%\nStatus: Charging\nEstimated: {time}"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󱜤 On",
+            "deactivated": "󱠎 Off"
+        },
+        "tooltip-format-activated": "Status: On\nMode: Presentation",
+        "tooltip-format-deactivated": "Status: Off\nMode: Idle"
+    },
+    "clock": {
+        "interval": 1,
+        "format": "{:%H:%M}",
+        "locale": "C",
+        "tooltip-format": "{:Date: %B %d, %Y\nWeekday: %A\nTime: %T}"
+    }
+}
+

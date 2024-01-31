@@ -1,0 +1,134 @@
+* {
+    font-family: monospace;
+    font-weight: 500;
+    font-size: 14px;
+
+    border-radius: 10px;
+    text-shadow: none;
+    
+    transition-property: background;
+    transition-duration: 0.2s;
+}
+
+window#waybar {
+    background-color: transparent;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#workspaces {
+	margin-top: 6px;
+	background: rgba(16, 20, 24, 0.5);
+	transition: none;
+  font-size: 12px;
+}
+
+#workspaces button {
+    border: none;
+    padding: 0 6px;
+    background-color: transparent;
+    color: #ffffff;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+#workspaces button.active {
+    background: #faf9f5;
+    color: #000000;
+}
+
+#workspaces button.active:hover {
+    background: #faf9f5;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#mode {
+    background-color: #64727D;
+    border-bottom: 3px solid #ffffff;
+}
+
+#tray,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#network,
+#bluetooth,
+#idle_inhibitor,
+#wireplumber,
+#pulseaudio,
+#backlight,
+#battery, 
+#clock,
+#mode,
+#window {
+    margin-top: 6px;
+    padding: 0 12px;
+    color: #ffffff;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > * {
+    margin-left: 16px;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > * {
+    margin-right: 16px;
+}
+
+#tray {
+    background-color: rgba(16, 20, 24, 0.5);
+}
+
+/* Reserved style 
+ {
+    background-color: #87ddff;
+    color: #000000;
+}
+*/
+
+/* Styles for the monitors group */
+#cpu,
+#memory,
+#disk,
+#temperature {
+    background-color: #b0f5e5;
+    color: #000000;
+}
+
+/* Styles for the connections group */
+#network,
+#bluetooth {
+    background-color: #FFEAAA;
+    color: #000000;
+}
+
+/* Styles for the control panel module */
+#idle_inhibitor,
+#wireplumber,
+#pulseaudio,
+#backlight,
+#battery {
+    background-color: #FE968B;
+    color: #000000;
+}
+
+/* Styles for the clock */
+#clock {
+    background-color: #eefff1;
+    color: #000000;
+}
+
+#window {
+    font-weight: 400;
+    background-color: #cbecff;
+    color: #000000;
+}
