@@ -9,6 +9,7 @@
     ./helix
     ./hyprland
     ./mpd
+    ./mpd-mpris
     ./ncmpcpp
     ./tofi
     ./waybar
