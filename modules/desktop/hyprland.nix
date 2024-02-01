@@ -15,5 +15,6 @@ in {
     mako
     tofi
     waybar
+    wl-clipboard
   ]);
 }
