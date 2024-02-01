@@ -9,6 +9,9 @@
     ./helix
     ./hyprland
     ./mako
+    ./mpd
+    ./mpd-mpris
+    ./ncmpcpp
     ./tofi
     ./waybar
     ./xdg

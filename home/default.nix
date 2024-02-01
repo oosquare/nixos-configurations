@@ -24,6 +24,7 @@
     vscode
     telegram-desktop
     mpv
+    playerctl
   ];
 
   programs.git = {
