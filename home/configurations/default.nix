@@ -8,6 +8,7 @@
     ./fzf
     ./helix
     ./hyprland
+    ./mako
     ./tofi
     ./waybar
     ./xdg
