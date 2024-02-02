@@ -25,6 +25,8 @@
     telegram-desktop
     mpv
     playerctl
+    jq
+    libnotify
   ];
 
   programs.git = {
