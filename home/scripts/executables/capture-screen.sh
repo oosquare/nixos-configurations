@@ -7,9 +7,15 @@
 COMMAND=$1
 SCREENSHOT_DIR=$2
 
+function notify_result() {
+    FULL_PATH=$1
+    notify-send "Screenshot" "Saved as $FULL_PATH" || true
+}
+
 function capture_fullscreen() {
     FILENAME="$(date +'%F-%H-%M-%S').png"
     grim "$SCREENSHOT_DIR/$FILENAME"
+    notify_result "$SCREENSHOT_DIR/$FILENAME"
 }
 
 function capture_active() {
@@ -24,6 +30,7 @@ function capture_active() {
     esac
     FILENAME="$(date +'%F-%H-%M-%S').png"
     grim -g "$POSITION" "$SCREENSHOT_DIR/$FILENAME"
+    notify_result "$SCREENSHOT_DIR/$FILENAME"
 }
 
 function capture_selection() {
@@ -36,6 +43,7 @@ function capture_selection() {
 
     FILENAME="$(date +'%F-%H-%M-%S').png"
     grim -g "$POSITION" "$SCREENSHOT_DIR/$FILENAME"
+    notify_result "$SCREENSHOT_DIR/$FILENAME"
 }
 
 function main() {

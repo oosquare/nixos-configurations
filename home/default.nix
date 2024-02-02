@@ -26,6 +26,7 @@
     mpv
     playerctl
     jq
+    libnotify
   ];
 
   programs.git = {
