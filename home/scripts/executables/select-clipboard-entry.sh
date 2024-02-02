@@ -1,3 +1,5 @@
+#! /usr/bin/env -S zsh --no-rcs
+
 ENTRYS=$(cliphist list)
 # Remove the indices given by cliphist and show tofi to select an entry
 SELECTION=$(echo $ENTRYS | awk -F '\t' '{print $2}' | tofi --prompt-text 'clipboard:')

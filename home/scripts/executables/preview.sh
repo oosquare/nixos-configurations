@@ -1,3 +1,5 @@
+#! /usr/bin/env -S zsh --no-rcs
+
 if [[ -d $1 ]]; then
     tree $1
 elif [[ $1 == *.zip ]]; then
