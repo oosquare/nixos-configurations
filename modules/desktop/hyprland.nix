@@ -12,6 +12,7 @@ in {
 
   # Additional packages that enhance Hyprland's functionality
   environment.systemPackages = lib.optionals hyprlandFlags.enable (with pkgs; [
+    cliphist
     mako
     tofi
     waybar
