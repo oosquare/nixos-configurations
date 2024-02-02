@@ -25,6 +25,7 @@
     telegram-desktop
     mpv
     playerctl
+    jq
   ];
 
   programs.git = {
