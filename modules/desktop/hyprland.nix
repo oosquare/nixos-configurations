@@ -16,6 +16,7 @@ in {
     grim
     mako
     slurp
+    swww
     tofi
     waybar
     wl-clipboard
