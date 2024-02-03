@@ -13,6 +13,8 @@
     # Development
     git
     gnumake
+    nix-output-monitor
+    nvd
   ];
 
   programs.zsh.enable = true;
