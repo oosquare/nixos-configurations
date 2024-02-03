@@ -5,11 +5,11 @@
     "spacing": 4,
     "modules-left": [
         "hyprland/workspaces",
+        "tray",
         "hyprland/window"
     ],
     "modules-center": [],
     "modules-right": [
-        "tray",
         "custom/mpris",
         "group/dash-board",
         "group/connections",
@@ -64,23 +64,6 @@
         "icon-size": 21,
         "spacing": 10
     },
-    // "mpris": {
-    //     "format": "{status_icon} {dynamic}",
-    //     "format-stopped": "{status_icon} Stopped",
-    //     "interval": 1,
-    //     "tooltip-format-playing": "Player: {player}\nStatus: Playing\n\nTitle: {title}\nArtist: {artist}\nAlbum: {album}\nPosition: {position}/{length}",
-    //     "tooltip-format-paused": "Player: {player}\nStatus: Paused\n\nTitle: {title}\nArtist: {artist}\nAlbum: {album}\nPosition: {position}/{length}",
-    //     "tooltip-format-stopped": "Player: {player}\nStatus: Stopped",
-    //     "dynamic-order": [
-    //         "artist",
-    //         "title"
-    //     ],
-    //     "status-icons": {
-    //         "playing": "",
-    //         "paused": "",
-    //         "stopped": ""
-    //     }
-    // },
     "custom/mpris": {
         "format": "{icon} {:40}",
         "format-icons": {
