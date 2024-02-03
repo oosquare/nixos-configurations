@@ -9,8 +9,8 @@
     ],
     "modules-center": [],
     "modules-right": [
-        "",
         "tray",
+        "custom/mpris",
         "group/dash-board",
         "group/connections",
         "group/control-panel",
@@ -18,10 +18,6 @@
     ],
 
     // Groups
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
-    },
     "group/dash-board": {
         "orientation": "inherit",
         "modules": [
@@ -63,6 +59,44 @@
     },
     "hyprland/window": {
         "format": "{initialTitle}"
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    // "mpris": {
+    //     "format": "{status_icon} {dynamic}",
+    //     "format-stopped": "{status_icon} Stopped",
+    //     "interval": 1,
+    //     "tooltip-format-playing": "Player: {player}\nStatus: Playing\n\nTitle: {title}\nArtist: {artist}\nAlbum: {album}\nPosition: {position}/{length}",
+    //     "tooltip-format-paused": "Player: {player}\nStatus: Paused\n\nTitle: {title}\nArtist: {artist}\nAlbum: {album}\nPosition: {position}/{length}",
+    //     "tooltip-format-stopped": "Player: {player}\nStatus: Stopped",
+    //     "dynamic-order": [
+    //         "artist",
+    //         "title"
+    //     ],
+    //     "status-icons": {
+    //         "playing": "",
+    //         "paused": "",
+    //         "stopped": ""
+    //     }
+    // },
+    "custom/mpris": {
+        "format": "{icon} {:40}",
+        "format-icons": {
+            "playing": "",
+            "paused": "",
+            "stopped": ""
+        },
+        "return-type": "json",
+        "interval": 1,
+        "max-length": 20,
+        "exec": "~/.scripts/executables/slice-song-info.sh",
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-click-middle": "playerctl previous",
+        "on-scroll-up": "playerctl position 10+",
+        "on-scroll-down": "playerctl position 10-"
     },
     "cpu": {
         "format": " {usage}%"
