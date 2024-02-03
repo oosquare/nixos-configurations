@@ -2,6 +2,8 @@
 
 # This script will take a slice of a string which contains information of 
 # a song played now based on the current position.
+# Usage: ./get-song-info.sh <COMMAND>
+# <COMMAND> can be `metadata` or `progress`
 
 
 # Generate a JSON string expected by Waybar
@@ -32,7 +34,7 @@ function generate_tooltip() {
     echo -E 'Player: '$PLAYER'\nStatus: '$STATUS'\n\n'$SONG_INFO
 }
 
-# Take a slice of the title
+# Take a slice of the metadata string
 function get_slice() {
     SLICE_LEN=20
     RAW_TEXT=$1
@@ -47,6 +49,7 @@ function get_slice() {
 }
 
 function main() {
+    COMMAND=$1
     STATUS=$(playerctl status)
     PLAYER=$(playerctl metadata --format '{{playerName}}' || echo 'None')
     
@@ -56,12 +59,26 @@ function main() {
         exit 0
     fi
     
+
     RAW_TEXT=$(playerctl metadata --format '{{artist}} - {{title}}')
     ALT=$(generate_alt $STATUS)
     TOOLTIP=$(generate_tooltip $PLAYER $STATUS)
-    POSITION=$(printf '%0.f' $(playerctl position))
-    TEXT=$(get_slice $RAW_TEXT $POSITION)
+
+    case $COMMAND in
+        "metadata")
+            POSITION=$(printf '%0.f' $(playerctl position))
+            TEXT=$(get_slice $RAW_TEXT $POSITION)
+        ;;
+        "progress")
+            TEXT=$(playerctl metadata --format '{{duration(position)}}/{{duration(mpris:length)}}')
+        ;;
+        *)
+            echo "Error: unknown command: \`$COMMAND\`"
+            exit 1
+        ;;
+    esac
+
     echo -E "$(generate_json $TEXT $ALT $TOOLTIP)"
 }
 
-main
+main $1

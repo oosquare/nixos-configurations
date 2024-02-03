@@ -56,7 +56,8 @@ window#waybar.hidden {
 
 #tray,
 #mpris,
-#custom-mpris,
+#custom-mpris-metadata,
+#custom-mpris-progress,
 #cpu,
 #memory,
 #disk,
@@ -91,7 +92,8 @@ window#waybar.hidden {
 }
 
 /* Styles for the MPRIS module */
-#custom-mpris,
+#custom-mpris-metadata,
+#custom-mpris-progress,
 #mpris {
     background-color: #87ddff;
     color: #000000;
