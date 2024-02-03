@@ -122,7 +122,9 @@
         "format": "{icon} {volume}%",
         "format-muted": "󰝟",
         "format-icons": ["", "", ""],
-        "tooltip-format": "Node: {node_name}\nVolume: {volume}%"
+        "tooltip-format": "Node: {node_name}\nVolume: {volume}%",
+        "on-click": "helvum",
+        "on-click-right": "easyeffects"
     },
     "backlight": {
         "format": " {percent}%",
