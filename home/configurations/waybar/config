@@ -5,12 +5,12 @@
     "spacing": 4,
     "modules-left": [
         "hyprland/workspaces",
+        "tray",
         "hyprland/window"
     ],
     "modules-center": [],
     "modules-right": [
-        "",
-        "tray",
+        "custom/mpris-progress",
         "group/dash-board",
         "group/connections",
         "group/control-panel",
@@ -18,10 +18,6 @@
     ],
 
     // Groups
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
-    },
     "group/dash-board": {
         "orientation": "inherit",
         "modules": [
@@ -64,6 +60,43 @@
     "hyprland/window": {
         "format": "{initialTitle}"
     },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "custom/mpris-metadata": {
+        "format": "{icon} {:40}",
+        "format-icons": {
+            "playing": "",
+            "paused": "",
+            "stopped": ""
+        },
+        "return-type": "json",
+        "interval": 1,
+        "max-length": 20,
+        "exec": "~/.scripts/executables/get-song-info.sh metadata",
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-click-middle": "playerctl previous",
+        "on-scroll-up": "playerctl position 10+",
+        "on-scroll-down": "playerctl position 10-"
+    },
+    "custom/mpris-progress": {
+        "format": "{icon} {}",
+        "format-icons": {
+            "playing": "",
+            "paused": "",
+            "stopped": ""
+        },
+        "return-type": "json",
+        "interval": 1,
+        "exec": "~/.scripts/executables/get-song-info.sh progress",
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-click-middle": "playerctl previous",
+        "on-scroll-up": "playerctl position 10+",
+        "on-scroll-down": "playerctl position 10-"
+    },
     "cpu": {
         "format": " {usage}%"
     },
@@ -105,7 +138,9 @@
         "format": "{icon} {volume}%",
         "format-muted": "󰝟",
         "format-icons": ["", "", ""],
-        "tooltip-format": "Node: {node_name}\nVolume: {volume}%"
+        "tooltip-format": "Node: {node_name}\nVolume: {volume}%",
+        "on-click": "helvum",
+        "on-click-right": "easyeffects"
     },
     "backlight": {
         "format": " {percent}%",

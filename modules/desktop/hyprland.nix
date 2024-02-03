@@ -13,7 +13,9 @@ in {
   # Additional packages that enhance Hyprland's functionality
   environment.systemPackages = lib.optionals hyprlandFlags.enable (with pkgs; [
     cliphist
+    easyeffects
     grim
+    helvum
     mako
     slurp
     swww
