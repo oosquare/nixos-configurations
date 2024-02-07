@@ -18,9 +18,12 @@ in {
     helvum
     mako
     slurp
+    swaylock-effects
     swww
     tofi
     waybar
     wl-clipboard
   ]);
+
+  security.pam.services.swaylock = {};
 }
