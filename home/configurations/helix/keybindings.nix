@@ -30,36 +30,36 @@
       i = "scroll_up";
     };
 
-  	w = {
-    	w = "rotate_view";
-    	j = "jump_view_left";
-    	k = "jump_view_down";
-    	l = "jump_view_right";
-    	i = "jump_view_up";
-    	J = [ "vsplit" "swap_view_left" ];
-    	K = "hsplit";
-    	L = "vsplit";
-    	I = [ "hsplit" "swap_view_up" ];
-    	n = ":new";
-    	e = ":buffer-close";
-  	};
-	
-  	g = {
-    	j = "goto_first_nonwhitespace";
-    	k = "move_line_down";
-    	i = "move_line_up";
-    	l = "goto_line_end";
-    	h = "goto_line_start";
-    	s = "no_op";
-  	};
-	
-  	Z = {
-    	k = "scroll_down";
-    	K = [ "scroll_down" "scroll_down" "scroll_down" "scroll_down" "scroll_down" ];
-    	i = "scroll_up";
-    	I = [ "scroll_up" "scroll_up" "scroll_up" "scroll_up" "scroll_up" ];
-    	j = "no_op";
-  	};
+    w = {
+      w = "rotate_view";
+      j = "jump_view_left";
+      k = "jump_view_down";
+      l = "jump_view_right";
+      i = "jump_view_up";
+      J = [ "vsplit" "swap_view_left" ];
+      K = "hsplit";
+      L = "vsplit";
+      I = [ "hsplit" "swap_view_up" ];
+      n = ":new";
+      e = ":buffer-close";
+    };
+
+    g = {
+      j = "goto_first_nonwhitespace";
+      k = "move_line_down";
+      i = "move_line_up";
+      l = "goto_line_end";
+      h = "goto_line_start";
+      s = "no_op";
+    };
+
+    Z = {
+      k = "scroll_down";
+      K = [ "scroll_down" "scroll_down" "scroll_down" "scroll_down" "scroll_down" ];
+      i = "scroll_up";
+      I = [ "scroll_up" "scroll_up" "scroll_up" "scroll_up" "scroll_up" ];
+      j = "no_op";
+    };
   };
 
 
@@ -129,6 +129,6 @@
       i = "scroll_up";
       I = [ "scroll_up" "scroll_up" "scroll_up" "scroll_up" "scroll_up" ];
       j = "no_op";
-    };   
+    };
   };
 }

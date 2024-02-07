@@ -5,7 +5,7 @@
 
     border-radius: 10px;
     text-shadow: none;
-    
+
     transition-property: background;
     transition-duration: 0.2s;
 }
@@ -19,9 +19,9 @@ window#waybar.hidden {
 }
 
 #workspaces {
-	margin-top: 6px;
-	background: rgba(16, 20, 24, 0.5);
-	transition: none;
+    margin-top: 6px;
+    background: rgba(16, 20, 24, 0.5);
+    transition: none;
   font-size: 12px;
 }
 
@@ -68,7 +68,7 @@ window#waybar.hidden {
 #wireplumber,
 #pulseaudio,
 #backlight,
-#battery, 
+#battery,
 #clock,
 #mode,
 #window {
