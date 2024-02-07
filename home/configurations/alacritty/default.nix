@@ -1,17 +1,26 @@
-{ config, pkgs, flags, ... }:
+{ config, lib, pkgs, flags, ... }@args:
 
 let
   colorscheme = if flags.ui.colorscheme == "Tokyo Night Storm" then "tokyo-night-storm"
     else if flags.ui.colorscheme == "One Dark" then "one-dark"
     else builtins.abort "Invalid value `${flags.ui.colorscheme}` for `flags.ui.colorscheme`";
 in {
-  home.file.".config/alacritty/alacritty.toml".source = pkgs.substitute {
-    src = ./alacritty.toml;
-    replacements = [ "--replace @%colorscheme-placeholder%@ ${colorscheme}" ];
-  };
+  programs.alacritty.enable = true;
 
-  home.file.".config/alacritty/themes" = {
-    source = ./themes;
-    recursive = true;
+  programs.alacritty.settings = {
+    font.size = 10;
+    selection.semantic_escape_chars = '',.?│`|:;"' ()[]{}<>	!@#$%^&*-=+/~'';
+    keyboard.bindings = import ./keybindings.nix args;
+    colors = import ./themes/${colorscheme}.nix args;
+
+    window = {
+      decorations = "None";
+      opacity = 0.7;
+
+      padding = {
+        x = 4;
+        y = 0;
+      };
+    };
   };
 }
