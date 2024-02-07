@@ -18,6 +18,8 @@ in {
     helvum
     mako
     slurp
+    sway-audio-idle-inhibit
+    swayidle
     swaylock-effects
     swww
     tofi
