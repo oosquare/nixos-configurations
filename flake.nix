@@ -55,7 +55,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.${constants.username} = import ./home;
-            home-manager.extraSpecialArgs = { inherit constants flags; };
+            home-manager.extraSpecialArgs = { inherit inputs constants flags; };
           }
         ];
       };
