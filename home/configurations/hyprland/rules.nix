@@ -7,7 +7,7 @@ let
     { field = "title"; pattern = "^QQ$"; rules = [ "float" "center" "maximize" ]; }
 
     # VS Code
-    { field = "class"; pattern = "^Code$"; rules = [ "opacity 0.85" ]; }
+    { field = "title"; pattern = ".*Visual Studio Code$"; rules = [ "opacity 0.85" ]; }
 
     # Calculators
     { field = "title"; pattern = "^([Cc]alculator|计算器)$"; rules = [ "float" ]; }
