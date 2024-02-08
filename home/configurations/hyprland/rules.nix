@@ -1,21 +1,21 @@
 { config, lib, pkgs, ... }:
 
-{
-  windowrulev2 = [
+let
+  rules = [
     # QQ
-    "float, title:^(QQ|图片查看器)$"
-    "center, title:^(QQ|图片查看器)$"
-    "maximize, title:^QQ$"
-
-    # Telegram
-    "float, class:org\.telegram\.desktop"
-    "center, class:org\.telegram\.desktop"
-    "maximize, class:org\.telegram\.desktop"
+    { field = "title"; pattern = "^图片查看器$"; rules = [ "float" "center" ]; }
+    { field = "title"; pattern = "^QQ$"; rules = [ "float" "center" "maximize" ]; }
 
     # VS Code
-    "opacity 0.85, title:.*\ -\ Visual Studio Code$"
+    { field = "class"; pattern = "^Code$"; rules = [ "opacity 0.85" ]; }
 
     # Calculators
-    "float, title:.*([Cc]alculator|计算器).*"
+    { field = "title"; pattern = "^([Cc]alculator|计算器)$"; rules = [ "float" ]; }
   ];
+
+  buildRules = { field, pattern, rules }: builtins.map
+    (rule: "${rule}, ${field}:${pattern}")
+    rules;
+in {
+  windowrulev2 = builtins.concatMap buildRules rules;
 }

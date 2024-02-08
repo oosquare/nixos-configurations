@@ -1,68 +1,77 @@
 { config, lib, pkgs, ... }:
 
-{
-  "$mainMod" = "SUPER";
-  "$terminal" = "~/.scripts/executables/execute-alacritty.sh";
+let
+  terminal = "~/.scripts/executables/execute-alacritty.sh";
+  launcher = "tofi-drun --terminal '${terminal} -e' | xargs -I % sh -c '%'";
+  screenshot = "~/.scripts/executables/capture-screen.sh";
+  screenshotDir = "~/userdata/pictures/screenshots";
+  clipboard = "~/.scripts/executables/select-clipboard-entry.sh";
+  locker = "~/.scripts/executables/lock.sh";
 
-  bind = [
-    "$mainMod, Q, exec, $terminal"
-    "$mainMod, C, killactive"
-    "$mainMod, M, exit, "
-    "$mainMod, E, exec, nautilus"
-    "$mainMod, V, togglefloating, "
-    "$mainMod, F, fullscreen, 1"
-    "$mainMod, R, exec, tofi-drun --terminal '$terminal -e' | xargs -I % sh -c '%'  "
-    "$mainMod, P, togglesplit, # dwindle"
-    "$mainMod, A, exec, ~/.scripts/executables/select-clipboard-entry.sh"
-    "$mainMod, S, exec, ~/.scripts/executables/capture-screen.sh selection ~/userdata/pictures/screenshots"
-    "$mainMod SHIFT, S, exec, ~/.scripts/executables/capture-screen.sh fullscreen ~/userdata/pictures/screenshots"
-    "$mainMod CTRL, S, exec, ~/.scripts/executables/capture-screen.sh active ~/userdata/pictures/screenshots"
-    "$mainMod, L, exec, ~/.scripts/executables/lock.sh"
+  keybindings = [
+    { key = "Q"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = terminal; }
+    { key = "C"; modifiers = [ "SUPER" ]; dispatcher = "killactive"; }
+    { key = "M"; modifiers = [ "SUPER" ]; dispatcher = "exit"; }
+    { key = "E"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = "nautilus"; }
+    { key = "V"; modifiers = [ "SUPER" ]; dispatcher = "togglefloating"; }
+    { key = "F"; modifiers = [ "SUPER" ]; dispatcher = "fullscreen"; args = "1"; }
+    { key = "R"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = launcher; }
+    { key = "P"; modifiers = [ "SUPER" ]; dispatcher = "togglesplit"; }
+    { key = "A"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = clipboard; }
+    { key = "S"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = "${screenshot} selection ${screenshotDir}"; }
+    { key = "S"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "exec"; args = "${screenshot} fullscreen ${screenshotDir}"; }
+    { key = "S"; modifiers = [ "SUPER CTRL" ]; dispatcher = "exec"; args = "${screenshot} active ${screenshotDir}"; }
+    { key = "L"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = locker; }
 
     # Move focus
-    "ALT, Tab, cyclenext"
-    "ALT SHIFT, Tab, cyclenext, prev"
-    "$mainMod, J, movefocus, l"
-    "$mainMod, L, movefocus, r"
-    "$mainMod, I, movefocus, u"
-    "$mainMod, K, movefocus, d"
+    { key = "Tab"; modifiers = [ "ALT" ]; dispatcher = "cyclenext"; }
+    { key = "Tab"; modifiers = [ "ALT SHIFT" ]; dispatcher = "cyclenext"; args = "prev"; }
+    { key = "J"; modifiers = [ "SUPER" ]; dispatcher = "movefocus"; args = "l"; }
+    { key = "L"; modifiers = [ "SUPER" ]; dispatcher = "movefocus"; args = "r"; }
+    { key = "I"; modifiers = [ "SUPER" ]; dispatcher = "movefocus"; args = "u"; }
+    { key = "K"; modifiers = [ "SUPER" ]; dispatcher = "movefocus"; args = "d"; }
 
     # Switch workspaces
-    "$mainMod, 1, workspace, 1"
-    "$mainMod, 2, workspace, 2"
-    "$mainMod, 3, workspace, 3"
-    "$mainMod, 4, workspace, 4"
-    "$mainMod, 5, workspace, 5"
-    "$mainMod, 6, workspace, 6"
-    "$mainMod, 7, workspace, 7"
-    "$mainMod, 8, workspace, 8"
-    "$mainMod, 9, workspace, 9"
-    "$mainMod, 0, workspace, 10"
-    "$mainMod CTRL, Left, workspace, -1"
-    "$mainMod CTRL, Right, workspace, +1"
+    { key = "1"; modifiers = [ "SUPER" ]; dispatcher = "workspace"; args = "1"; }
+    { key = "2"; modifiers = [ "SUPER" ]; dispatcher = "workspace"; args = "2"; }
+    { key = "3"; modifiers = [ "SUPER" ]; dispatcher = "workspace"; args = "3"; }
+    { key = "4"; modifiers = [ "SUPER" ]; dispatcher = "workspace"; args = "4"; }
+    { key = "5"; modifiers = [ "SUPER" ]; dispatcher = "workspace"; args = "5"; }
+    { key = "6"; modifiers = [ "SUPER" ]; dispatcher = "workspace"; args = "6"; }
+    { key = "7"; modifiers = [ "SUPER" ]; dispatcher = "workspace"; args = "7"; }
+    { key = "8"; modifiers = [ "SUPER" ]; dispatcher = "workspace"; args = "8"; }
+    { key = "9"; modifiers = [ "SUPER" ]; dispatcher = "workspace"; args = "9"; }
+    { key = "0"; modifiers = [ "SUPER" ]; dispatcher = "workspace"; args = "10"; }
+    { key = "Left"; modifiers = [ "SUPER CTRL" ]; dispatcher = "workspace"; args = "-1"; }
+    { key = "Right"; modifiers = [ "SUPER CTRL" ]; dispatcher = "workspace"; args = "+1"; }
 
     # Move active window to a workspace
-    "$mainMod SHIFT, 1, movetoworkspace, 1"
-    "$mainMod SHIFT, 2, movetoworkspace, 2"
-    "$mainMod SHIFT, 3, movetoworkspace, 3"
-    "$mainMod SHIFT, 4, movetoworkspace, 4"
-    "$mainMod SHIFT, 5, movetoworkspace, 5"
-    "$mainMod SHIFT, 6, movetoworkspace, 6"
-    "$mainMod SHIFT, 7, movetoworkspace, 7"
-    "$mainMod SHIFT, 8, movetoworkspace, 8"
-    "$mainMod SHIFT, 9, movetoworkspace, 9"
-    "$mainMod SHIFT, 0, movetoworkspace, 10"
-    "$mainMod SHIFT, Left, movetoworkspace, -1"
-    "$mainMod SHIFT, Right, movetoworkspace, +1"
+    { key = "1"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "movetoworkspace"; args = "1"; }
+    { key = "2"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "movetoworkspace"; args = "2"; }
+    { key = "3"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "movetoworkspace"; args = "3"; }
+    { key = "4"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "movetoworkspace"; args = "4"; }
+    { key = "5"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "movetoworkspace"; args = "5"; }
+    { key = "6"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "movetoworkspace"; args = "6"; }
+    { key = "7"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "movetoworkspace"; args = "7"; }
+    { key = "8"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "movetoworkspace"; args = "8"; }
+    { key = "9"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "movetoworkspace"; args = "9"; }
+    { key = "0"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "movetoworkspace"; args = "10"; }
+    { key = "Left"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "movetoworkspace"; args = "-1"; }
+    { key = "Right"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "movetoworkspace"; args = "+1"; }
 
     # Scroll through existing workspaces with mainMod + scroll
-    "$mainMod, mouse_down, workspace, +1"
-    "$mainMod, mouse_up, workspace, -1"
+    { key = "mouse_down"; modifiers = [ "SUPER" ]; dispatcher = "workspace"; args = "+1"; }
+    { key = "mouse_up"; modifiers = [ "SUPER" ]; dispatcher = "workspace"; args = "-1"; }
+
+    { mode = "m"; key = "mouse:272"; modifiers = [ "SUPER" ]; dispatcher = "movewindow"; }
+    { mode = "m"; key = "mouse:273"; modifiers = [ "SUPER" ]; dispatcher = "resizewindow"; }
   ];
 
-  # Move/resize windows with mainMod + LMB/RMB and dragging
-  bindm = [
-    "$mainMod, mouse:272, movewindow"
-    "$mainMod, mouse:273, resizewindow"
-  ];
-}
+  buildKeybinding = { key, modifiers ? [], dispatcher, args ? "", ... }: let
+    modifierString = builtins.concatStringsSep " " modifiers;
+  in
+    builtins.concatStringsSep "," ([ modifierString key dispatcher ] ++ (lib.optional (args != "") args));
+in 
+  lib.attrsets.concatMapAttrs
+    (mode: keybindings: { "bind${mode}" = (builtins.map buildKeybinding keybindings); })
+    (builtins.groupBy ({ mode ? "", ... }: mode) keybindings)
