@@ -14,8 +14,6 @@ let
     CLUTTER_BACKEND = "wayland";
 
     # Themes
-    XCURSOR_SIZE = 32;
-    GTK_THEME = "Adwaita:dark";
     QT_QPA_PLATFORMTHEME = "qt5ct";
 
     # UI

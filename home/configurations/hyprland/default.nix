@@ -7,6 +7,8 @@
     then inputs.hyprland.packages.${pkgs.system}.hyprland
     else pkgs.hyprland;
 
+  wayland.windowManager.hyprland.systemd.enable = false;
+
   wayland.windowManager.hyprland.settings = lib.attrsets.mergeAttrsList [
     (import ./environment.nix args)
     (import ./startup.nix args)

@@ -6,6 +6,7 @@
     ./atuin
     ./fontconfig
     ./fzf
+    ./gtk
     ./helix
     ./hyprland
     ./mako
