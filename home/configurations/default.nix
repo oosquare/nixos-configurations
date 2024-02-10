@@ -13,6 +13,7 @@
     ./mpd
     ./mpd-mpris
     ./ncmpcpp
+    ./qt
     ./tofi
     ./waybar
     ./xdg
