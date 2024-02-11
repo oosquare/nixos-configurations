@@ -1,28 +1,14 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, flags, ... }:
 
 {
-  gtk = {
-    enable = true;
+  imports = [
+    ./cursor
+    ./icon
+    ./window
+  ];
 
-    theme = {
-      name = "Orchis-Dark";
-      package = pkgs.orchis-theme.override {
-        tweaks = [ "compact" ];
-      };
-    };
-
-    iconTheme = {
-      name = "Reversal-blue";
-      package = pkgs.reversal-icon-theme.override {
-        colorVariants = [ "-blue" ];
-      };
-    };
-  };
-
-  home.pointerCursor = {
-    gtk.enable = true;
-    name = "Vimix-cursors";
-    package = pkgs.vimix-cursors;
-    size = 24;
-  };
+  gtk.enable = builtins.any (entry: entry.enable == true) (with flags.desktop; [
+    gnome
+    hyprland
+  ]);
 }
