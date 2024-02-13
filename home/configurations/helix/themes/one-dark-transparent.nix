@@ -3,6 +3,8 @@
 {
   inherits = "onedark";
 
+  comment = "#939496";
+
   "ui.background" = { fg = "foreground"; };
   "ui.cursorline.primary" = { bg = "cursorline"; };
   "ui.cursor.match" = { fg = "foreground"; bg = "light-gray"; };
