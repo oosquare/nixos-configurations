@@ -1,22 +1,28 @@
-{ config, lib, pkgs, inputs, flags, ... }@args:
+{ config, lib, pkgs, inputs, ... }@args:
 
-{
-  wayland.windowManager.hyprland.enable = flags.desktop.hyprland.enable;
+let
+  flags = config.flags;
+in {
+  config = lib.mkIf flags.desktop.hyprland.enable {
+    wayland.windowManager.hyprland = {
+      enable = true;
+      systemd.enable = false;
 
-  wayland.windowManager.hyprland.package = if flags.desktop.hyprland.dev
-    then inputs.hyprland.packages.${pkgs.system}.hyprland
-    else pkgs.hyprland;
-
-  wayland.windowManager.hyprland.systemd.enable = false;
-
-  wayland.windowManager.hyprland.settings = lib.attrsets.mergeAttrsList [
-    (import ./environment.nix args)
-    (import ./startup.nix args)
-    (import ./input.nix args)
-    (import ./output.nix args)
-    (import ./keybindings.nix args)
-    (import ./layout.nix args)
-    (import ./rules.nix args)
-    (import ./ui.nix args)
-  ];
+      package = if flags.desktop.hyprland.dev then
+        inputs.hyprland.packages.${pkgs.system}.hyprland
+      else
+        pkgs.hyprland;
+  
+      settings = lib.attrsets.mergeAttrsList [
+        (import ./environment.nix args)
+        (import ./startup.nix args)
+        (import ./input.nix args)
+        (import ./output.nix args)
+        (import ./keybindings.nix args)
+        (import ./layout.nix args)
+        (import ./rules.nix args)
+        (import ./ui.nix args)
+      ];
+    };
+  };
 }

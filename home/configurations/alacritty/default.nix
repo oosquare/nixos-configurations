@@ -1,9 +1,12 @@
-{ config, lib, pkgs, flags, ... }@args:
+{ config, lib, pkgs, ... }@args:
 
 let
-  colorscheme = if flags.ui.colorscheme == "Tokyo Night Storm" then "tokyo-night-storm"
-    else if flags.ui.colorscheme == "One Dark" then "one-dark"
-    else builtins.abort "Invalid value `${flags.ui.colorscheme}` for `flags.ui.colorscheme`";
+  colorscheme = if config.flags.ui.colorscheme == "Tokyo Night Storm" then
+    "tokyo-night-storm"
+  else if config.flags.ui.colorscheme == "One Dark" then
+    "one-dark"
+  else
+    builtins.abort "Unreachable";
 in {
   programs.alacritty.enable = true;
 

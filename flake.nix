@@ -36,26 +36,23 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
-    constants = import ./global/constants.nix;
-    globalFlags = import ./global/flags.nix;
-
     buildSystem = { system, hostname }: let
-      flags = nixpkgs.lib.attrsets.recursiveUpdate
-        globalFlags (import ./system/${hostname}/flags.nix);
+      constants = (import ./global/constants.nix) // { inherit hostname; };
     in
       nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs constants flags; };
+        specialArgs = { inherit inputs constants; };
 
         modules = [
           ./system/${hostname}
+          ./global/flags-def.nix
           { nix.settings.trusted-users = [ constants.username ]; }
 
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.${constants.username} = import ./home;
-            home-manager.extraSpecialArgs = { inherit inputs constants flags; };
+            home-manager.extraSpecialArgs = { inherit inputs constants; };
           }
         ];
       };

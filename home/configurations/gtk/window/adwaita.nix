@@ -1,15 +1,18 @@
-{ config, lib, pkgs, flags, ... }:
+{ config, lib, pkgs, ... }:
 
-lib.optionalAttrs
-  (flags.ui.theme.window == "Adwaita")
-  (if flags.ui.theme.mode == "Light" then
-    {
-      gtk.theme.name = lib.mkForce "Adwaita";
-    }
-  else if flags.ui.theme.mode == "Dark" then
-    {
-      gtk.theme.name = lib.mkForce "Adwaita-dark";
-      home.sessionVariables.GTK_THEME = "Adwaita-dark";
-    }
-  else
-    (builtins.abort "Invalid value `${flags.ui.theme.mode}` for `flags.ui.theme.mode`"))
+let
+  flags = config.flags;
+in {
+  config = lib.mkIf (flags.ui.theme.window == "Adwaita") {
+    gtk.theme.name = if flags.ui.theme.mode == "Light" then
+      lib.mkForce "Adwaita"
+    else if flags.ui.theme.mode == "Dark" then
+      lib.mkForce "Adwaita-dark"
+    else
+      builtins.abort "Unreachable";
+
+    home.sessionVariables = lib.optionalAttrs flags.ui.theme.mode == "Dark" {
+      GTK_THEME = "Adwaita-dark";
+    };
+  };
+}

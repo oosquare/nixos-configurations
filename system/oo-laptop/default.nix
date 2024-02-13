@@ -2,6 +2,9 @@
 
 {
   imports = [
+    # Flags
+    ../../global/flags.nix
+
     # Common modules
     ../../modules/i18n.nix
     ../../modules/desktop

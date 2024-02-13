@@ -4,6 +4,7 @@
   imports = [
     ./scripts
     ./configurations
+    ../global/flags.nix
   ];
 
   home.username = constants.username;
