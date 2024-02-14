@@ -4,6 +4,7 @@
   imports = [
     ./alacritty
     ./atuin
+    ./cava
     ./fontconfig
     ./fzf
     ./gtk

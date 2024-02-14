@@ -76,10 +76,10 @@
         "max-length": 20,
         "exec": "~/.scripts/executables/get-song-info.sh metadata",
         "on-click": "playerctl play-pause",
-        "on-click-right": "playerctl next",
-        "on-click-middle": "playerctl previous",
-        "on-scroll-up": "playerctl position 10+",
-        "on-scroll-down": "playerctl position 10-"
+        "on-click-right": "~/.scripts/executables/execute-alacritty.sh -e cava",
+        "on-click-middle": "playerctl stop",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
     },
     "custom/mpris-progress": {
         "format": "{icon} {}",
@@ -92,10 +92,10 @@
         "interval": 1,
         "exec": "~/.scripts/executables/get-song-info.sh progress",
         "on-click": "playerctl play-pause",
-        "on-click-right": "playerctl next",
-        "on-click-middle": "playerctl previous",
-        "on-scroll-up": "playerctl position 10+",
-        "on-scroll-down": "playerctl position 10-"
+        "on-click-right": "~/.scripts/executables/execute-alacritty.sh -e cava",
+        "on-click-middle": "playerctl stop",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
     },
     "cpu": {
         "format": " {usage}%"
