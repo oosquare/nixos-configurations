@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
+  browser = "firefox";
   terminal = "~/.scripts/executables/execute-alacritty.sh";
   launcher = "tofi-drun --terminal '${terminal} -e' | xargs -I % sh -c '%'";
   screenshot = "~/.scripts/executables/capture-screen.sh";
@@ -9,6 +10,8 @@ let
   locker = "~/.scripts/executables/lock.sh";
 
   keybindings = [
+    { key = "W"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = browser; }
+    { key = "W"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "exec"; args = "${browser} --private-window"; }
     { key = "Q"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = terminal; }
     { key = "C"; modifiers = [ "SUPER" ]; dispatcher = "killactive"; }
     { key = "M"; modifiers = [ "SUPER" ]; dispatcher = "exit"; }
