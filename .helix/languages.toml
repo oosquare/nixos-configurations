@@ -1,0 +1,3 @@
+[language-server.nil]
+command = "nil"
+config = { nil = { diagnostics = { ignored = ["unused_binding", "unused_with"], excludedFiles = [] }, nix = { binary = "nix", maxMemoryMB = 2560, flake = { autoArchive = false, autoEvalInputs = true, nixpkgsInputName = "nixpkgs" } } } }

@@ -56,11 +56,30 @@
           }
         ];
       };
+
+    buildShell = { system, packages ? (pkgs: []), hook ? "" }: let
+      pkgs = import nixpkgs { inherit system; };
+    in
+      pkgs.mkShell {
+        packages = packages pkgs;
+
+        shellHook = ''
+          exec zsh
+          ${hook}
+        '';
+      };
   in {
     nixosConfigurations = {
       "oo-laptop" = buildSystem {
         system = "x86_64-linux";
         hostname = "oo-laptop";
+      };
+    };
+
+    devShells = {
+      x86_64-linux.default = buildShell {
+        system = "x86_64-linux";
+        packages = (pkgs: with pkgs; [ nil ]);
       };
     };
   };
