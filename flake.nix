@@ -45,7 +45,6 @@
 
         modules = [
           ./system/${hostname}
-          ./global/flags-def.nix
           { nix.settings.trusted-users = [ constants.username ]; }
 
           home-manager.nixosModules.home-manager {
@@ -62,11 +61,7 @@
     in
       pkgs.mkShell {
         packages = packages pkgs;
-
-        shellHook = ''
-          exec zsh
-          ${hook}
-        '';
+        shellHook = "${hook}";
       };
   in {
     nixosConfigurations = {

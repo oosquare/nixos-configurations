@@ -5,6 +5,7 @@
     ./alacritty
     ./atuin
     ./cava
+    ./direnv
     ./fontconfig
     ./fzf
     ./gtk
