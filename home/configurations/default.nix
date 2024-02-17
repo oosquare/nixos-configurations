@@ -19,6 +19,7 @@
     ./tofi
     ./waybar
     ./xdg
+    ./zellij
     ./zsh
   ];
 }
