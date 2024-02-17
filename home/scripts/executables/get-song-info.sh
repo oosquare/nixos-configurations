@@ -5,6 +5,19 @@
 # Usage: ./get-song-info.sh <COMMAND>
 # <COMMAND> can be `metadata` or `progress`
 
+function query_metadata() {
+    METADATA=$1
+    DEFAULT=$2
+    VALUE=$(playerctl metadata --format "{{$METADATA}}" || echo '')
+
+    if [[ -n $VALUE ]]; then
+        echo -E "$VALUE"
+    elif [[ -n $DEFAULT ]]; then
+        echo -E "$DEFAULT"
+    else
+        echo "N/A"
+    fi
+}
 
 # Generate a JSON string expected by Waybar
 # See also https://github.com/Alexays/Waybar/wiki/Module:-Custom
@@ -30,8 +43,13 @@ function generate_alt() {
 function generate_tooltip() {
     PLAYER=$1
     STATUS=$2
-    SONG_INFO=$(playerctl metadata --format 'Title: {{title}}\nArtist: {{artist}}\nAlbum: {{album}}\nPosition: {{duration(position)}}/{{duration(mpris:length)}}')
-    echo -E 'Player: '$PLAYER'\nStatus: '$STATUS'\n\n'$SONG_INFO
+    TITLE=$3
+    ARTIST=$4
+    ALBUM=$5
+    PROGRESS=$6
+
+    SONG_INFO='Title: '"$TITLE"'\nArtist: '"$ARTIST"'\nAlbum: '"$ALBUM"'\nPosition: '"$PROGRESS"
+    echo -E 'Player: '"$PLAYER"'\nStatus: '"$STATUS"'\n\n'"$SONG_INFO"
 }
 
 # Take a slice of the metadata string
@@ -51,26 +69,38 @@ function get_slice() {
 function main() {
     COMMAND=$1
     STATUS=$(playerctl status)
-    PLAYER=$(playerctl metadata --format '{{playerName}}' || echo 'None')
+    # PLAYER=$(playerctl metadata --format '{{playerName}}' || echo 'None')
+    PLAYER=$(query_metadata "playerName" "None")
     
     # Check if the player is stopped
     if [[ $STATUS == 'Stopped' ]]; then
         echo -E $(generate_json 'Stopped' 'stopped' 'Player: '$PLAYER'\nStatus: Stopped')
         exit 0
     fi
-    
 
-    RAW_TEXT=$(playerctl metadata --format '{{artist}} - {{title}}')
+    ARTIST=$(query_metadata "artist")
+    TITLE=$(query_metadata "title")
+    ALBUM=$(query_metadata "album")
+    POSITION=$(query_metadata "duration(position)")
+    LENGTH=$(query_metadata "duration(mpris:length)" "Stream")
+
+    if [[ $POSITION == "0:00" && $LENGTH == "Stream" ]]; then
+        PROGRESS="Stream"
+    else
+        PROGRESS="$POSITION/$LENGTH"
+    fi
+
+    RAW_TEXT="$ARTIST - $TITLE"
     ALT=$(generate_alt $STATUS)
-    TOOLTIP=$(generate_tooltip $PLAYER $STATUS)
+    TOOLTIP=$(generate_tooltip "$PLAYER" "$STATUS" "$ARTIST" "$TITLE" "$ALBUM" "$PROGRESS")
 
     case $COMMAND in
         "metadata")
-            POSITION=$(printf '%0.f' $(playerctl position))
-            TEXT=$(get_slice $RAW_TEXT $POSITION)
+            POS=$(printf '%0.f' $(playerctl position))
+            TEXT=$(get_slice "$RAW_TEXT" "$POS")
         ;;
         "progress")
-            TEXT=$(playerctl metadata --format '{{duration(position)}}/{{duration(mpris:length)}}')
+            TEXT="$PROGRESS"
         ;;
         *)
             echo "Error: unknown command: \`$COMMAND\`"
@@ -78,7 +108,7 @@ function main() {
         ;;
     esac
 
-    echo -E "$(generate_json $TEXT $ALT $TOOLTIP)"
+    echo -E "$(generate_json "$TEXT" "$ALT" "$TOOLTIP")"
 }
 
 main $1
