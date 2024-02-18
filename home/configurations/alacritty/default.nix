@@ -16,6 +16,11 @@ in {
     keyboard.bindings = import ./keybindings.nix args;
     colors = import ./themes/${colorscheme}.nix args;
 
+    shell = {
+      program = "${pkgs.zsh}/bin/zsh";
+      args = [ "--no-rcs" "-c" "zellij" ];
+    };
+
     window = {
       decorations = "None";
       opacity = 0.7;
