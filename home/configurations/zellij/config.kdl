@@ -106,6 +106,7 @@ keybinds clear-defaults=true {
         bind "Ctrl g" { SwitchToMode "Locked"; }
         bind "Ctrl q" { Quit; }
         bind "Alt N" { NewPane; }
+        bind "Alt X" { CloseFocus; }
         bind "Alt T" { NewTab; }
         bind "Alt W" { CloseTab; }
         bind "Alt J" { MoveFocus "Left"; }
