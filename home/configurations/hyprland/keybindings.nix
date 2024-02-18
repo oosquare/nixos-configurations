@@ -24,7 +24,7 @@ let
     { key = "S"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = "${screenshot} selection ${screenshotDir}"; }
     { key = "S"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "exec"; args = "${screenshot} fullscreen ${screenshotDir}"; }
     { key = "S"; modifiers = [ "SUPER CTRL" ]; dispatcher = "exec"; args = "${screenshot} active ${screenshotDir}"; }
-    { key = "L"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = locker; }
+    { key = "L"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "exec"; args = locker; }
 
     # Move focus
     { key = "Tab"; modifiers = [ "ALT" ]; dispatcher = "cyclenext"; }
