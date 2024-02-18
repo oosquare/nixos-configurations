@@ -112,6 +112,12 @@ keybinds clear-defaults=true {
         bind "Alt L" { MoveFocus "Right"; }
         bind "Alt K" { MoveFocus "Down"; }
         bind "Alt I" { MoveFocus "Up"; }
+        bind "Alt F" { ToggleFocusFullscreen; }
+        bind "Alt D" {
+            NewTab {
+                layout "@@%%xdg-config-home%%@@/zellij/layouts/ide.kdl"
+            }
+        }
         bind "Alt {" { GoToPreviousTab; }
         bind "Alt }" { GoToNextTab; }
     }
@@ -147,3 +153,5 @@ plugins {
 
 theme "tokyo-night-storm"
 copy_on_select false
+pane_frames false
+default_layout "custom-default"
