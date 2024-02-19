@@ -10,11 +10,13 @@
     H = "insert_at_line_start";
     L = "move_next_word_end";
     K = [ "move_line_down" "move_line_down" "move_line_down" "move_line_down" "move_line_down" ];
-    I = ["move_line_up" "move_line_up" "move_line_up" "move_line_up" "move_line_up" ];
+    I = [ "move_line_up" "move_line_up" "move_line_up" "move_line_up" "move_line_up" ];
     W = ":write";
     E = ":quit";
     x = [ "move_prev_word_end" "move_next_word_start" "trim_selections" ];
     X = "extend_line_below";
+    # Workaround for using C-A-i in zellij
+    A-tab = [ "extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before" ];
     C-A-i = [ "extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before" ];
     C-A-k = [ "extend_to_line_bounds" "delete_selection" "paste_after" ];
     A-i = "expand_selection";
@@ -64,14 +66,14 @@
 
 
   insert = {
-    "A-i" = "move_line_up";
-    "A-I" = [ "move_line_up" "move_line_up" "move_line_up" "move_line_up" "move_line_up" ];
-    "A-k" = "move_line_down";
-    "A-K" = [ "move_line_down" "move_line_down" "move_line_down" "move_line_down" "move_line_down" ];
-    "A-j" = "move_char_left";
-    "A-J" = "move_prev_word_start";
-    "A-l" = "move_char_right";
-    "A-L" = [ "move_next_word_end" "move_char_right" ];
+    A-i = "move_line_up";
+    A-I = [ "move_line_up" "move_line_up" "move_line_up" "move_line_up" "move_line_up" ];
+    A-k = "move_line_down";
+    A-K = [ "move_line_down" "move_line_down" "move_line_down" "move_line_down" "move_line_down" ];
+    A-j = "move_char_left";
+    A-J = "move_prev_word_start";
+    A-l = "move_char_right";
+    A-L = [ "move_next_word_end" "move_char_right" ];
   };
 
   select = {
