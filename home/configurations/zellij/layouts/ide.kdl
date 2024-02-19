@@ -2,8 +2,8 @@ layout {
     pane {
         pane {
             size "80%"
-            command "hx"
-            args "."
+            command "direnv"
+            args "exec" "." "hx" "."
         }
         pane split_direction="vertical" {
             pane
