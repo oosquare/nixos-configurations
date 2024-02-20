@@ -30,11 +30,6 @@
     libnotify
   ];
 
-  programs.git = {
-    userName = constants.username;
-    userEmail = constants.email;
-  };
-
   home.stateVersion = "24.05";
 
   programs.home-manager.enable = true;

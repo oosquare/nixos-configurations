@@ -8,6 +8,7 @@
     ./direnv
     ./fontconfig
     ./fzf
+    ./git
     ./gtk
     ./helix
     ./hyprland
@@ -16,6 +17,7 @@
     ./mpd-mpris
     ./ncmpcpp
     ./qt
+    ./ssh
     ./tofi
     ./waybar
     ./xdg
