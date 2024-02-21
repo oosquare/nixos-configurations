@@ -1,4 +1,4 @@
-{ config, pkgs, constants, ... }:
+{ config, pkgs, inputs, constants, ... }:
 
 {
   imports = [
@@ -28,7 +28,9 @@
     playerctl
     jq
     libnotify
-  ];
+  ] ++ (with inputs.nur.packages.${pkgs.system}; [
+    fcitx5-fluent-dark
+  ]);
 
   home.stateVersion = "24.05";
 

@@ -129,11 +129,33 @@
         "type": "github"
       }
     },
+    "nur": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1708526322,
+        "narHash": "sha256-rIpmByx6PMkbXTzNm9sX0KmlHxpmSV+EleEvhpmLw+w=",
+        "owner": "oo-infty",
+        "repo": "nur-packages",
+        "rev": "55267941772864b2a89c300584f5f156d28f2aed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oo-infty",
+        "ref": "master",
+        "repo": "nur-packages",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "hyprland": "hyprland",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nur": "nur"
       }
     },
     "systems": {
