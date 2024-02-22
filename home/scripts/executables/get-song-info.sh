@@ -69,11 +69,10 @@ function get_slice() {
 function main() {
     COMMAND=$1
     STATUS=$(playerctl status)
-    # PLAYER=$(playerctl metadata --format '{{playerName}}' || echo 'None')
     PLAYER=$(query_metadata "playerName" "None")
     
     # Check if the player is stopped
-    if [[ $STATUS == 'Stopped' ]]; then
+    if [[ $STATUS != 'Playing' && $STATUS != 'Paused' ]]; then
         echo -E $(generate_json 'Stopped' 'stopped' 'Player: '$PLAYER'\nStatus: Stopped')
         exit 0
     fi
