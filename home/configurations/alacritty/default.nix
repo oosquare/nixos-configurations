@@ -18,7 +18,7 @@ in {
 
     shell = {
       program = "${pkgs.zsh}/bin/zsh";
-      args = [ "--no-rcs" "-c" "zellij" ];
+      args = [ "--no-rcs" "-c" "sleep 0.01; zellij" ];
     };
 
     window = {
