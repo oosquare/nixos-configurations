@@ -11,24 +11,13 @@
     ../../modules/fonts.nix
     ../../modules/packages.nix
     ../../modules/networking.nix
+    ../../modules/nix.nix
     ../../modules/services.nix
 
     # System-specific modules
     ./hardware.nix
     ./containers.nix
   ];
-
-  # Nix settings
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 7d";
-  };
 
   networking.hostName = "oo-laptop";
 
