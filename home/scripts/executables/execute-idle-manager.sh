@@ -2,7 +2,7 @@
 
 LOCK_COMMAND='~/.scripts/executables/lock.sh'
 
-swayidle -w \
+swayidle \
     timeout 300 "$LOCK_COMMAND" \
     timeout 600 "systemctl suspend" \
     before-sleep "$LOCK_COMMAND" &
