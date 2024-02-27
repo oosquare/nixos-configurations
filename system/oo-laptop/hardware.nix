@@ -89,6 +89,30 @@
     };
   };
 
+  # Power management
+  services.power-profiles-daemon.enable = false;
+
+  services.tlp = {
+    enable = true;
+
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "powersave";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+      CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+
+      CPU_BOOST_ON_AC = 1;
+      CPU_BOOST_ON_BAT = 0;
+
+      SCHED_POWERSAVE_ON_AC = 0;
+      SCHED_POWERSAVE_ON_BAT = 1;
+
+      START_CHARGE_THRESH_BAT1 = 80;
+      STOP_CHARGE_THRESH_BAT1 = 85;
+    };
+  };
+
   environment.systemPackages = [
     (pkgs.writeShellScriptBin "nvidia-offload" ''
       export __NV_PRIME_RENDER_OFFLOAD=1
