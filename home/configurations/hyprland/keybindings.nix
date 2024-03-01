@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  browser = "firefox";
+  browser = "firefox-developer-edition";
   terminal = "~/.scripts/executables/execute-alacritty.sh";
   launcher = "tofi-drun --terminal '${terminal} -e' | xargs -I % sh -c '%'";
   screenshot = "~/.scripts/executables/capture-screen.sh";

@@ -11,7 +11,7 @@
   home.homeDirectory = "/home/${config.home.username}";
 
   home.packages = with pkgs; [
-    firefox
+    firefox-devedition-bin
     ripgrep
     fd
     qq
