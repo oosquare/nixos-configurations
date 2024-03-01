@@ -16,7 +16,7 @@
 
     # System-specific modules
     ./hardware.nix
-    ./containers.nix
+    ./virtualization.nix
   ];
 
   networking.hostName = "oo-laptop";
