@@ -28,6 +28,7 @@
     playerctl
     jq
     libnotify
+    thunderbird
   ] ++ (with inputs.nur.packages.${pkgs.system}; [
     fcitx5-fluent-dark
   ]);
