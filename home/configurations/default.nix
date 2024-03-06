@@ -9,6 +9,7 @@
     ./fontconfig
     ./fzf
     ./git
+    ./gnupg
     ./gtk
     ./helix
     ./hyprland

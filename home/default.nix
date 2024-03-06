@@ -11,24 +11,24 @@
   home.homeDirectory = "/home/${config.home.username}";
 
   home.packages = with pkgs; [
-    firefox-devedition-bin
-    ripgrep
-    fd
-    qq
-    neofetch
-    bat
     alacritty
+    bat
+    fd
+    firefox-devedition-bin
+    jq
+    keepassxc
+    libnotify
+    logseq
+    mpv
+    neofetch
+    playerctl
+    qq
+    ripgrep
+    telegram-desktop
+    thunderbird
     tree
     unzip
-    logseq
-    keepassxc
     vscode
-    telegram-desktop
-    mpv
-    playerctl
-    jq
-    libnotify
-    thunderbird
   ] ++ (with inputs.nur.packages.${pkgs.system}; [
     fcitx5-fluent-dark
   ]);
