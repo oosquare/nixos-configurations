@@ -18,14 +18,18 @@
       };
     };
 
-    desktop = {
-      gnome = {
-        enable = true;
-      };
-
-      hyprland = {
-        enable = true;
-        dev = false;
+    packages = {
+      desktop = {
+        environment = {
+          gnome = {
+            enable = true;
+          };
+  
+          hyprland = {
+            enable = true;
+            dev = false;
+          };
+        };
       };
     };
   };

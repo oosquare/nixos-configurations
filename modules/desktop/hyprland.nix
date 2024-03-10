@@ -1,12 +1,12 @@
 { config, lib, pkgs, inputs, ... }:
 
 let
-  flags = config.flags;
+  flags = config.flags.packages.desktop.environment.hyprland;
 in {
-  config = lib.mkIf flags.desktop.hyprland.enable {
+  config = lib.mkIf flags.enable {
     programs.hyprland = {
       enable = true;
-      package = if flags.desktop.hyprland.dev then
+      package = if flags.dev then
         inputs.hyprland.packages.${pkgs.system}.hyprland
       else
         pkgs.hyprland;

@@ -4,10 +4,7 @@ let
   flags = config.flags;
 in {
   config = let
-    hasDesktop = builtins.any (entry: entry.enable == true) (with flags.desktop; [
-      gnome
-      hyprland
-    ]);
+    hasDesktop = flags.packages.desktop.enable;
   in
     lib.mkIf hasDesktop {
       qt.enable = true;

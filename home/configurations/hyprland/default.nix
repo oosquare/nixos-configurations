@@ -1,14 +1,14 @@
 { config, lib, pkgs, inputs, ... }@args:
 
 let
-  flags = config.flags;
+  flags = config.flags.packages.desktop.environment.hyprland;
 in {
-  config = lib.mkIf flags.desktop.hyprland.enable {
+  config = lib.mkIf flags.enable {
     wayland.windowManager.hyprland = {
       enable = true;
       systemd.enable = false;
 
-      package = if flags.desktop.hyprland.dev then
+      package = if flags.dev then
         inputs.hyprland.packages.${pkgs.system}.hyprland
       else
         pkgs.hyprland;

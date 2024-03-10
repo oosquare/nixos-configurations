@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 
 let
-  flags = config.flags;
+  flags = config.flags.packages.desktop.environment.gnome;
 in {
-  config = lib.mkIf flags.desktop.gnome.enable {
+  config = lib.mkIf flags.enable {
     services.xserver.enable = true;
   
     services.xserver.displayManager.gdm.enable = true;

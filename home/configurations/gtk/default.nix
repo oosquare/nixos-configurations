@@ -10,10 +10,7 @@ in {
   ];
 
   config = let
-    hasDesktop = builtins.any (entry: entry.enable == true) (with flags.desktop; [
-      gnome
-      hyprland
-    ]);
+    hasDesktop = flags.packages.desktop.enable;
   in
     lib.mkIf hasDesktop {
       gtk.enable = true;
