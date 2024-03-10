@@ -19,6 +19,14 @@
     };
 
     packages = {
+      core = {
+        enable = true;
+      };
+
+      cli = {
+        enable = true;
+      };
+
       desktop = {
         environment = {
           gnome = {
@@ -30,6 +38,24 @@
             dev = false;
           };
         };
+
+        communication.enable = true;
+        i18n.enable = true;
+        multimedia.enable = true;
+        network.enable = true;
+        production.enable = true;
+      };
+
+      development = {
+        enable = true;
+      };
+
+      services = {
+        enable = true;
+        bluetooth.enable = true;
+        network.enable = true;
+        proxy.enable = true;
+        sound.enable = true;
       };
     };
   };

@@ -2,17 +2,9 @@
 
 {
   imports = [
-    # Flags
-    ../../global/flags.nix
-
     # Common modules
-    ../../modules/i18n.nix
-    ../../modules/desktop
-    ../../modules/fonts.nix
-    ../../modules/packages.nix
-    ../../modules/networking.nix
-    ../../modules/nix.nix
-    ../../modules/services.nix
+    ../../global/flags.nix
+    ../../modules
 
     # System-specific modules
     ./hardware.nix

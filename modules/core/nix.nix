@@ -12,5 +12,6 @@
     options = "--delete-older-than 7d";
   };
 
-	nixpkgs.overlays = import ../overlays args;
+	nixpkgs.overlays = import ../../overlays args;
+  nixpkgs.config.allowUnfree = true;
 }
