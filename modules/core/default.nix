@@ -11,6 +11,7 @@ in {
     environment.systemPackages = with pkgs; [
       curl
       helix
+      trash-cli
     ];
   
     programs.zsh.enable = true;

@@ -27,6 +27,8 @@
       ga = "git add .";
       gs = "git status";
       gl = "git log --pretty='format:%C(yellow)%h %C(blue)%ad %C(white)%s' --graph --date=short";
+      rm = "echo 'rm: command is disabled for security'";
+      tsp = "trash-put";
     };
   };
 
