@@ -19,7 +19,6 @@
     keepassxc
     libnotify
     logseq
-    mpv
     neofetch
     playerctl
     qq

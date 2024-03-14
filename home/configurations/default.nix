@@ -16,6 +16,7 @@
     ./mako
     ./mpd
     ./mpd-mpris
+    ./mpv
     ./ncmpcpp
     ./qt
     ./ssh
