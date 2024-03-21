@@ -33,6 +33,16 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
     hyprland = {
       url = "github:hyprwm/Hyprland";
@@ -40,7 +50,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: let
     buildSystem = { system, hostname }: let
       constants = (import ./global/constants.nix) // { inherit hostname; };
     in
@@ -58,6 +68,9 @@
             home-manager.users.${constants.username} = import ./home;
             home-manager.extraSpecialArgs = { inherit inputs constants; };
           }
+
+          inputs.agenix.nixosModules.default
+          inputs.agenix-rekey.nixosModules.default
         ];
       };
 
@@ -77,10 +90,18 @@
     };
 
     devShells = {
-      x86_64-linux.default = buildShell {
+      x86_64-linux.default = buildShell rec {
         system = "x86_64-linux";
-        packages = (pkgs: with pkgs; [ nil ]);
+        packages = (pkgs: with pkgs; [
+          nil
+          inputs.agenix-rekey.packages.${system}.default
+        ]);
       };
+    };
+
+    agenix-rekey = inputs.agenix-rekey.configure {
+      userFlake = self;
+      nodes = self.nixosConfigurations;
     };
   };
 }
