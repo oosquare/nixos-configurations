@@ -122,7 +122,8 @@
         "tooltip-format-on": "Controller: {controller_alias}\nAddress: {controller_address}\nStatus: On\n\nNo Connection",
         "tooltip-format-connected": "Controller: {controller_alias}\nAddress: {controller_address}\nStatus: Connected\n\nConnections:\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias} ({device_address})",
-        "tooltip-format-enumerate-connected-battery": "{device_alias} ({device_address}) {device_battery_percentage}%"
+        "tooltip-format-enumerate-connected-battery": "{device_alias} ({device_address}) {device_battery_percentage}%",
+        "on-click": "blueman-manager"
     },
     "network": {
         "interval": 5,

@@ -2,6 +2,7 @@
 
 let
   flags = config.flags.packages.desktop.environment.hyprland;
+  globalFlags = config.flags;
 in {
   config = lib.mkIf flags.enable {
     programs.hyprland = {
@@ -30,5 +31,7 @@ in {
     ];
   
     security.pam.services.swaylock = {};
+
+    services.blueman.enable = globalFlags.packages.services.bluetooth.enable;
   };
 }
