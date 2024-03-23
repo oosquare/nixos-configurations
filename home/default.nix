@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, constants, ... }:
+{ config, lib, pkgs, inputs, constants, ... }:
 
 {
   imports = [
@@ -20,6 +20,7 @@
     libnotify
     logseq
     neofetch
+    newsflash
     playerctl
     qq
     ripgrep
