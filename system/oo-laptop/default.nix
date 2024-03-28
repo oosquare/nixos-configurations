@@ -3,8 +3,8 @@
 {
   imports = [
     # Common modules
-    ../../global/flags.nix
-    ../../modules
+    ../../modules/flags
+    ../../modules/nixos
 
     # System-specific modules
     ./hardware.nix

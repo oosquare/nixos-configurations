@@ -52,7 +52,7 @@
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: let
     buildSystem = { system, hostname }: let
-      constants = (import ./global/constants.nix) // { inherit hostname; };
+      constants = (import ./modules/constants.nix) // { inherit hostname; };
     in
       nixpkgs.lib.nixosSystem {
         inherit system;

@@ -1,9 +1,8 @@
-{ config, lib, pkgs, constants, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports = [
-    ./flags-def.nix
-    ./override/${constants.hostname}/flags.nix
+    ./declaration.nix
   ];
 
   flags = {
