@@ -1,7 +1,11 @@
 { config, lib, pkgs, ... }:
 
-{
-  home.packages = with pkgs; [
-    vscode
-  ];
+let
+  flags = config.flags.packages.development;
+in {
+  config = lib.mkIf flags.enable {
+    home.packages = with pkgs; [
+      vscode
+    ];
+  };
 }

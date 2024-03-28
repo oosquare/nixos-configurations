@@ -1,14 +1,11 @@
 { config, lib, pkgs, ... }:
 
 let
-  flags = config.flags;
+  flags = config.flags.packages.desktop;
 in {
-  config = let
-    hasDesktop = flags.packages.desktop.enable;
-  in
-    lib.mkIf hasDesktop {
-      qt.enable = true;
-      qt.platformTheme = "qtct";
-      qt.style.name = "kvantum";
-    };
+  config = lib.mkIf flags.enable {
+    qt.enable = true;
+    qt.platformTheme = "qtct";
+    qt.style.name = "kvantum";
+  };
 }

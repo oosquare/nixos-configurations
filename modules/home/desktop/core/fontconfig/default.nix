@@ -1,5 +1,9 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
-{
-  home.file.".config/fontconfig/fonts.conf".source = ./fonts.conf;
+let
+  flags = config.flags.packages.desktop;
+in {
+  config = lib.mkIf flags.enable {
+    home.file.".config/fontconfig/fonts.conf".source = ./fonts.conf;
+  };
 }

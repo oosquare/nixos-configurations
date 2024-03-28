@@ -76,14 +76,19 @@ in {
 
         options.enable = mkOption {
           type = types.bool;
-          default = with flags.packages.desktop.environment; builtins.any (x: x.enable) [
-            gnome
-            hyprland
-          ];
+          default = flags.packages.desktop.environment.enable;
         };
 
         options.environment = mkSubOption {
           description = "Desktop environments";
+
+          options.enable = mkOption {
+            type = types.bool;
+            default = with flags.packages.desktop.environment; builtins.any (x: x.enable) [
+              gnome
+              hyprland
+            ];
+          };
 
           options.gnome = mkSubOption {
             description = "The GNOME desktop environment";

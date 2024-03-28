@@ -1,6 +1,8 @@
 { config, lib, pkgs, inputs, ... }:
 
-{
+let
+  flags = config.flags.packages.desktop;
+in {
   imports = [
     ./alacritty
     ./fontconfig
@@ -9,10 +11,12 @@
     ./xdg
   ];
   
-  home.packages = with pkgs; [
-    keepassxc
-    libnotify
-  ] ++ (with inputs.nur.packages.${pkgs.system}; [
-    fcitx5-fluent-dark
-  ]);
+  config = lib.mkIf flags.enable {
+    home.packages = with pkgs; [
+      keepassxc
+      libnotify
+    ] ++ (with inputs.nur.packages.${pkgs.system}; [
+      fcitx5-fluent-dark
+    ]);
+  };
 }

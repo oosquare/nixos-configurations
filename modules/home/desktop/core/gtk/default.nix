@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  flags = config.flags;
+  flags = config.flags.packages.desktop;
 in {
   imports = [
     ./cursor
@@ -9,10 +9,7 @@ in {
     ./window
   ];
 
-  config = let
-    hasDesktop = flags.packages.desktop.enable;
-  in
-    lib.mkIf hasDesktop {
-      gtk.enable = true;
-    };
+  config = lib.mkIf flags.enable {
+    gtk.enable = true;
+  };
 }
