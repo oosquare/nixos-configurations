@@ -60,7 +60,6 @@
 
         modules = [
           ./system/${hostname}
-          { nix.settings.trusted-users = [ constants.username ]; }
 
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
