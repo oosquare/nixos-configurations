@@ -91,7 +91,7 @@ function main() {
 
     RAW_TEXT="$ARTIST - $TITLE"
     ALT=$(generate_alt $STATUS)
-    TOOLTIP=$(generate_tooltip "$PLAYER" "$STATUS" "$ARTIST" "$TITLE" "$ALBUM" "$PROGRESS")
+    TOOLTIP=$(generate_tooltip "$PLAYER" "$STATUS" "$TITLE" "$ARTIST" "$ALBUM" "$PROGRESS")
 
     case $COMMAND in
         "metadata")
