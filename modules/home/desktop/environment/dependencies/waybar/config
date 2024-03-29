@@ -74,9 +74,9 @@
         "return-type": "json",
         "interval": 1,
         "max-length": 20,
-        "exec": "~/.scripts/executables/get-song-info.sh metadata",
+        "exec": "@@%%song-info%%@@ metadata",
         "on-click": "playerctl play-pause",
-        "on-click-right": "~/.scripts/executables/execute-alacritty.sh -e cava",
+        "on-click-right": "@@%%alacritty-wrapper%%@@ -e cava",
         "on-click-middle": "playerctl stop",
         "on-scroll-up": "playerctl next",
         "on-scroll-down": "playerctl previous"
@@ -90,9 +90,9 @@
         },
         "return-type": "json",
         "interval": 1,
-        "exec": "~/.scripts/executables/get-song-info.sh progress",
+        "exec": "@@%%song-info%%@@ progress",
         "on-click": "playerctl play-pause",
-        "on-click-right": "~/.scripts/executables/execute-alacritty.sh -e cava",
+        "on-click-right": "@@%%alacritty-wrapper%%@@ -e cava",
         "on-click-middle": "playerctl stop",
         "on-scroll-up": "playerctl next",
         "on-scroll-down": "playerctl previous"

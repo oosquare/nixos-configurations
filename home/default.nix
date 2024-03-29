@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./scripts
     ./configurations
     ../modules/flags
     ../modules/home
