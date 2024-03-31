@@ -6,12 +6,17 @@
     "flakes"
   ];
 
-   nix.settings.trusted-users = [ constants.username ];
+  nix.settings.trusted-users = [ constants.username ];
 
-   nix.gc = {
+  nix.gc = {
     automatic = true;
     dates = "daily";
     options = "--delete-older-than 7d";
+  };
+
+  nix.optimise = {
+    automatic = true;
+    dates = [ "weekly" ];
   };
 
 	nixpkgs.overlays = import ../../../overlays args;
