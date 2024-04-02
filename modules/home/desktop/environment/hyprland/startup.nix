@@ -1,9 +1,16 @@
 { config, lib, pkgs, ... }:
 
 let
+  locker = pkgs.writeScript
+    "swaylock-wrapper"
+    (builtins.readFile ../dependencies/scripts/swaylock-wrapper.sh);
+
   swayidle-wrapper = pkgs.writeScript
     "swayidle-wrapper"
-    (builtins.readFile ../dependencies/scripts/swayidle-wrapper.sh);
+    (builtins.replaceStrings
+      [ "@@%%locker%%@@" ]
+      [ "${locker}" ]
+      (builtins.readFile ../dependencies/scripts/swayidle-wrapper.sh));
 in {
   exec-once = [
     "fcitx5"

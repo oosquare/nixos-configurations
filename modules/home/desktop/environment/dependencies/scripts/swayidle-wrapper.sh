@@ -1,6 +1,6 @@
 #! /usr/bin/env -S zsh --no-rcs
 
-LOCK_COMMAND='~/.scripts/executables/lock.sh'
+LOCK_COMMAND='@@%%locker%%@@'
 
 swayidle \
     timeout 300 "$LOCK_COMMAND" \
