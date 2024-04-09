@@ -9,6 +9,7 @@
   cursorline = true;
   true-color = true;
   text-width = 165;
+  insert-final-newline = true;
 
   statusline = {
     left = [
