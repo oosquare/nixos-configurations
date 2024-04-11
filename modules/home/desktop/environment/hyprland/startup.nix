@@ -17,7 +17,6 @@ in {
     "waybar"
     "mako"
     "wl-paste --type text --watch cliphist store"
-    "swww init"
     "${swayidle-wrapper}"
   ];
 }
