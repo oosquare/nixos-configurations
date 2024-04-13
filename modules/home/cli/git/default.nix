@@ -5,7 +5,7 @@ let
 in {
   config = lib.mkIf flags.enable {
     programs.git = {
-  		enable = true;
+      enable = true;
       userName = constants.username;
       userEmail = constants.email;
     };

@@ -3,7 +3,7 @@
 {
   imports = [
     ./adwaita.nix
-		./reversal.nix
+    ./reversal.nix
   ];
 
   # Fallback configurations
