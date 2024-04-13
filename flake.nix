@@ -24,8 +24,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nixpkgs-d8fe5e6c.url = "github:NixOS/nixpkgs/d8fe5e6c92d0d190646fb9f1056741a229980089";
-
     nur = {
       url = "github:oo-infty/nur-packages/master";
       inputs.nixpkgs.follows = "nixpkgs";
