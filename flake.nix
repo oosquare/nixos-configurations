@@ -102,6 +102,7 @@
       in
         nix-on-droid.lib.nixOnDroidConfiguration {
           extraSpecialArgs = { inherit inputs constants; };
+          home-manager-path = home-manager.outPath;
 
           modules = [
             ./system/${hostname}
