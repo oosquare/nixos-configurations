@@ -26,37 +26,6 @@
       cli = {
         enable = true;
       };
-
-      desktop = {
-        environment = {
-          gnome = {
-            enable = false;
-          };
-  
-          hyprland = {
-            enable = false;
-            dev = false;
-          };
-        };
-
-        communication.enable = false;
-        i18n.enable = false;
-        multimedia.enable = false;
-        network.enable = false;
-        production.enable = false;
-      };
-
-      development = {
-        enable = false;
-      };
-
-      services = {
-        enable = false;
-        bluetooth.enable = false;
-        network.enable = false;
-        proxy.enable = false;
-        sound.enable = false;
-      };
     };
   };
 }

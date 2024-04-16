@@ -2,26 +2,7 @@
 
 {
   flags = lib.mkForce {
-    ui = {
-      colorscheme = "One Dark";
-
-      theme = {
-        window = "Orchis";
-        icon = "Reversal";
-        cursor = "Vimix";
-        mode = "Dark";
-      };
-    };
-
     packages = {
-      core = {
-        enable = true;
-      };
-
-      cli = {
-        enable = true;
-      };
-
       desktop = {
         environment = {
           gnome = {
