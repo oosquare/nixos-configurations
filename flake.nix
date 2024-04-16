@@ -34,6 +34,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +56,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: let
+  outputs = { self, nixpkgs, home-manager, nix-on-droid, ... }@inputs: let
     buildSystem = { system, hostname }: let
       constants = (import ./modules/constants.nix) // { inherit hostname; };
     in
@@ -64,7 +70,7 @@
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.${constants.username} = import ./home;
+            home-manager.users.${constants.username} = import ./home/${hostname};
             home-manager.extraSpecialArgs = { inherit inputs constants; };
           }
 
@@ -87,6 +93,28 @@
         system = "x86_64-linux";
         hostname = "oo-laptop";
       };
+    };
+
+    nixOnDroidConfigurations = {
+      "oo-matepad" = let
+        hostname = "oo-matepad";
+        constants = (import ./modules/constants.nix) // { inherit hostname; };
+      in
+        nix-on-droid.lib.nixOnDroidConfiguration {
+          extraSpecialArgs = { inherit inputs constants; };
+
+          modules = [
+            ./system/${hostname}
+
+            {
+              home-manager.config = ./home/${hostname};
+              home-manager.backupFileExtension = "hm-bak";
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs constants; };
+            }
+          ];
+        };
     };
 
     devShells = {

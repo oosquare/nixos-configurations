@@ -1,12 +1,7 @@
 { config, lib, pkgs, constants, ... }:
 
 {
-  imports = [
-    ./declaration.nix
-    ./${constants.hostname}.nix
-  ];
-
-  flags = {
+  flags = lib.mkForce {
     ui = {
       colorscheme = "One Dark";
 
@@ -30,32 +25,32 @@
       desktop = {
         environment = {
           gnome = {
-            enable = false;
+            enable = true;
           };
-  
+
           hyprland = {
-            enable = false;
+            enable = true;
             dev = false;
           };
         };
 
-        communication.enable = false;
-        i18n.enable = false;
-        multimedia.enable = false;
-        network.enable = false;
-        production.enable = false;
+        communication.enable = true;
+        i18n.enable = true;
+        multimedia.enable = true;
+        network.enable = true;
+        production.enable = true;
       };
 
       development = {
-        enable = false;
+        enable = true;
       };
 
       services = {
-        enable = false;
-        bluetooth.enable = false;
-        network.enable = false;
-        proxy.enable = false;
-        sound.enable = false;
+        enable = true;
+        bluetooth.enable = true;
+        network.enable = true;
+        proxy.enable = true;
+        sound.enable = true;
       };
     };
   };
