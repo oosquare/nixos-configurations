@@ -9,6 +9,8 @@
   environment.packages = with pkgs; [
     helix
     git
+    openssh
+    netcat
   ];
 
   environment.etcBackupExtension = ".bak";
