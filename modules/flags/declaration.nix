@@ -160,6 +160,13 @@ in {
             default = false;
           };
         };
+
+        ssh = {
+          enable = mkOption {
+            type = types.bool;
+            default = false;
+          };
+        };
       };
     };
   };

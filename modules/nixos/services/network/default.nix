@@ -5,6 +5,5 @@ let
 in {
   config = lib.mkIf flags.enable {
     networking.networkmanager.enable = true;
-    services.openssh.enable = true;
   };
 }

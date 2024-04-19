@@ -5,9 +5,6 @@
     # Common modules
     ../../modules/flags
     ../../modules/home
-
-    # System-specific modules
-    ./ssh
   ];
 
   home.username = constants.username;

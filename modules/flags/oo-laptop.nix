@@ -32,6 +32,7 @@
         network.enable = true;
         proxy.enable = true;
         sound.enable = true;
+        ssh.enable = true;
       };
     };
   };

@@ -6,5 +6,6 @@
     ./sound
     ./network
     ./proxy
+    ./ssh
   ];
 }
