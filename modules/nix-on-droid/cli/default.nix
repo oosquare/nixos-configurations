@@ -4,7 +4,7 @@ let
   flags = config.flags.packages.cli;
 in {
   config = lib.mkIf flags.enable {
-    environment.systemPackages = with pkgs; [
+    environment.packages = with pkgs; [
       git
     ];
   };

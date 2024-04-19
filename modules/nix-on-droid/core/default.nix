@@ -4,11 +4,10 @@ let
   flags = config.flags.packages.core;
 in {
   config = lib.mkIf flags.enable {
-    environment.systemPackages = with pkgs; [
+    environment.packages = with pkgs; [
       curl
       helix
+      zsh
     ];
-  
-    programs.zsh.enable = true;
   };
 }

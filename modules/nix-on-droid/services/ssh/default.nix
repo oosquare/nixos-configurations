@@ -4,6 +4,8 @@ let
   flags = config.flags.packages.services.ssh;
 in {
   config = lib.mkIf flags.enable {
-    services.openssh.enable = true;
+    environment.packages = with pkgs; [
+      openssh
+    ];
   };
 }
