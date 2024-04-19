@@ -4,14 +4,10 @@
   imports = [
     # Common modules
     ../../modules/flags
+    ../../modules/nix-on-droid
   ];
 
-  environment.packages = with pkgs; [
-    helix
-    git
-    openssh
-    netcat
-  ];
+  environment.packages = with pkgs; [];
 
   environment.etcBackupExtension = ".bak";
 
