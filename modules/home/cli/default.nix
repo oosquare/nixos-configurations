@@ -8,6 +8,7 @@ in {
     ./fzf
     ./git
     ./zellij
+    ./gh
   ];
 
   config = lib.mkIf flags.enable {
