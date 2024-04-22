@@ -18,5 +18,6 @@ in {
     "mako"
     "wl-paste --type text --watch cliphist store"
     "${swayidle-wrapper}"
+    "swww-daemon"
   ];
 }
