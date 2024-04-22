@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 let
   flags = config.flags.packages.desktop.multimedia;
@@ -13,6 +13,7 @@ in {
 
   config = lib.mkIf flags.enable {
     home.packages = with pkgs; [
+      inputs.nur.packages.${pkgs.system}.lx-music-desktop
       playerctl
     ];
   };
