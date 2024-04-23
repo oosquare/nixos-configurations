@@ -3,9 +3,11 @@
 let
   flags = config.flags.packages.services.ssh;
 in {
+  imports = [
+    ./module.nix
+  ];
+
   config = lib.mkIf flags.enable {
-    environment.packages = with pkgs; [
-      openssh
-    ];
+    services.ssh.enable = true;
   };
 }
