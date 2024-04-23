@@ -22,6 +22,8 @@
   };
 
   inputs = {
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nur = {
@@ -56,81 +58,71 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-on-droid, ... }@inputs: let
-    buildSystem = { system, hostname }: let
-      constants = (import ./modules/constants.nix) // { inherit hostname; };
-    in
-      nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs constants; };
+  outputs = { self, flake-parts, ... }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" "aarch64-linux" ];
 
-        modules = [
-          ./system/${hostname}
-
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.${constants.username} = import ./home/${hostname};
-            home-manager.extraSpecialArgs = { inherit inputs constants; };
-          }
-
-          inputs.agenix.nixosModules.default
-          inputs.agenix-rekey.nixosModules.default
-        ];
+      perSystem = { self', inputs', config, pkgs, ... }: {
+        devShells.default = let
+          mkShell = pkgs.mkShell.override { stdenv = pkgs.stdenvNoCC; };
+        in
+          mkShell {
+            packages = with pkgs; [
+              nil
+              inputs'.agenix-rekey.packages.default
+            ];
+          };
       };
+    
+      flake = {
+        nixosConfigurations.oo-laptop = let
+          hostname = "oo-laptop";
+          constants = (import ./modules/constants.nix) // { inherit hostname; };
+        in
+          inputs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = { inherit inputs constants; };
+    
+            modules = [
+              ./system/${hostname}
+    
+              inputs.home-manager.nixosModules.home-manager {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.${constants.username} = import ./home/${hostname};
+                home-manager.extraSpecialArgs = { inherit inputs constants; };
+              }
+    
+              inputs.agenix.nixosModules.default
+              inputs.agenix-rekey.nixosModules.default
+            ];
+          };
 
-    buildShell = { system, packages ? (pkgs: []), hook ? "" }: let
-      pkgs = import nixpkgs { inherit system; };
-      mkShell = pkgs.mkShell.override { stdenv = pkgs.stdenvNoCC; };
-    in
-      mkShell {
-        packages = packages pkgs;
-        shellHook = "${hook}";
-      };
-  in {
-    nixosConfigurations = {
-      "oo-laptop" = buildSystem {
-        system = "x86_64-linux";
-        hostname = "oo-laptop";
-      };
-    };
+        nixOnDroidConfigurations.oo-matepad = let
+          hostname = "oo-matepad";
+          constants = (import ./modules/constants.nix) // { inherit hostname; };
+        in
+          inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+            extraSpecialArgs = { inherit inputs constants; };
+            home-manager-path = inputs.home-manager.outPath;
+    
+            modules = [
+              ./system/${hostname}
+    
+              {
+                home-manager.config = ./home/${hostname};
+                home-manager.backupFileExtension = "hm-bak";
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = { inherit inputs constants; };
+              }
+            ];
+          };
 
-    nixOnDroidConfigurations = {
-      "oo-matepad" = let
-        hostname = "oo-matepad";
-        constants = (import ./modules/constants.nix) // { inherit hostname; };
-      in
-        nix-on-droid.lib.nixOnDroidConfiguration {
-          extraSpecialArgs = { inherit inputs constants; };
-          home-manager-path = home-manager.outPath;
-
-          modules = [
-            ./system/${hostname}
-
-            {
-              home-manager.config = ./home/${hostname};
-              home-manager.backupFileExtension = "hm-bak";
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs constants; };
-            }
-          ];
+        agenix-rekey = inputs.agenix-rekey.configure {
+          userFlake = self;
+          nodes = self.nixosConfigurations;
         };
-    };
-
-    devShells = {
-      x86_64-linux.default = buildShell rec {
-        system = "x86_64-linux";
-        packages = (pkgs: with pkgs; [
-          nil
-          inputs.agenix-rekey.packages.${system}.default
-        ]);
       };
     };
-
-    agenix-rekey = inputs.agenix-rekey.configure {
-      userFlake = self;
-      nodes = self.nixosConfigurations;
-    };
-  };
 }
