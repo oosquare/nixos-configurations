@@ -5,6 +5,9 @@
     # Common modules
     ../../modules/flags
     ../../modules/nix-on-droid
+
+    # System-specific modules
+    ./secrets.nix
   ];
 
   environment.packages = with pkgs; [];

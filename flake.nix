@@ -116,12 +116,15 @@
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = { inherit inputs constants; };
               }
+
+              inputs.agenix.nixosModules.default
+              inputs.agenix-rekey.nixosModules.default
             ];
           };
 
         agenix-rekey = inputs.agenix-rekey.configure {
           userFlake = self;
-          nodes = self.nixosConfigurations;
+          nodes = self.nixosConfigurations // self.nixOnDroidConfigurations;
         };
       };
     };
