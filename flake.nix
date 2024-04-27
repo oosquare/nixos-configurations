@@ -117,7 +117,7 @@
                 home-manager.extraSpecialArgs = { inherit inputs constants; };
               }
 
-              inputs.agenix.nixosModules.default
+              # inputs.agenix.nixosModules.default
               inputs.agenix-rekey.nixosModules.default
             ];
           };

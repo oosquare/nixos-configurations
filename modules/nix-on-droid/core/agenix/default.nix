@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  flags = config.core;
+  flags = config.flags.packages.core;
 in {
   imports = [
     ./module.nix

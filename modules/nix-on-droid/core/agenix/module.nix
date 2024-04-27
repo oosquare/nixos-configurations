@@ -7,8 +7,8 @@ let
   ageBin = lib.getExe config.age.package;
 
   newGeneration = ''
-    $DRY_RUN_CMD _agenix_generation="$(basename "$(readlink "${cfg.secretsDir}")" || echo 0)"
-    $DRY_RUN_CMD (( ++_agenix_generation ))
+    _agenix_generation="$(basename "$(readlink "${cfg.secretsDir}")" || echo 0)"
+    (( ++_agenix_generation ))
     $VERBOSE_ECHO "[agenix] creating new generation in ${cfg.secretsMountPoint}/$_agenix_generation"
     $DRY_RUN_CMD mkdir -p "${cfg.secretsMountPoint}"
     $DRY_RUN_CMD chmod 0751 "${cfg.secretsMountPoint}"
@@ -18,41 +18,41 @@ let
 
   setTruePath = secretType:
     if secretType.symlink then ''
-      $DRY_RUN_CMD _truePath="${cfg.secretsMountPoint}/$_agenix_generation/${secretType.name}"
+      _truePath="${cfg.secretsMountPoint}/$_agenix_generation/${secretType.name}"
     '' else ''
-      $DRY_RUN_CMD _truePath="${secretType.path}"
+      _truePath="${secretType.path}"
     '';
 
   installSecret = secretType: ''
     ${setTruePath secretType}
     $VERBOSE_ECHO "decrypting '${secretType.file}' to '$_truePath'..."
-    $DRY_RUN_CMD TMP_FILE="$_truePath.tmp"
+    TMP_FILE="$_truePath.tmp"
 
-    $DRY_RUN_CMD IDENTITIES=()
+    IDENTITIES=()
     # shellcheck disable=2043
     for identity in ${builtins.toString cfg.identityPaths}; do
       $DRY_RUN_CMD test -r "$identity" || continue
-      $DRY_RUN_CMD IDENTITIES+=(-i)
-      $DRY_RUN_CMD IDENTITIES+=("$identity")
+      IDENTITIES+=(-i)
+      IDENTITIES+=("$identity")
     done
 
-    $DRY_RUN_CMD test "''${#IDENTITIES[@]}" -eq 0 && echo "[agenix] WARNING: no readable identities found!"
+    $DRY_RUN_CMD test "''${#IDENTITIES[@]}" -eq 0 && $VERBOSE_ECHO "[agenix] WARNING: no readable identities found!"
 
     $DRY_RUN_CMD mkdir -p "$(dirname "$_truePath")"
     # shellcheck disable=SC2193,SC2050
-    $DRY_RUN_CMD [ "${secretType.path}" != "${cfg.secretsDir}/${secretType.name}" ] && mkdir -p "$(dirname "${secretType.path}")"
+    [ "${secretType.path}" != "${cfg.secretsDir}/${secretType.name}" ] && $DRY_RUN_CMD mkdir -p "$(dirname "${secretType.path}")"
     (
       $DRY_RUN_CMD umask u=r,g=,o=
       $DRY_RUN_CMD test -f "${secretType.file}" || echo '[agenix] WARNING: encrypted file ${secretType.file} does not exist!'
       $DRY_RUN_CMD test -d "$(dirname "$TMP_FILE")" || echo "[agenix] WARNING: $(dirname "$TMP_FILE") does not exist!"
-      $DRY_RUN_CMD LANG=${config.i18n.defaultLocale or "C"} ${ageBin} --decrypt "''${IDENTITIES[@]}" -o "$TMP_FILE" "${secretType.file}"
+      LANG=${config.i18n.defaultLocale or "C"} $DRY_RUN_CMD ${ageBin} --decrypt "''${IDENTITIES[@]}" -o "$TMP_FILE" "${secretType.file}"
     )
     $DRY_RUN_CMD chmod ${secretType.mode} "$TMP_FILE"
     $DRY_RUN_CMD mv -f "$TMP_FILE" "$_truePath"
 
     ${lib.optionalString secretType.symlink ''
       # shellcheck disable=SC2193,SC2050
-      $DRY_RUN_CMD [ "${secretType.path}" != "${cfg.secretsDir}/${secretType.name}" ] && ln -sfn "${cfg.secretsDir}/${secretType.name}" "${secretType.path}"
+      [ "${secretType.path}" != "${cfg.secretsDir}/${secretType.name}" ] && $DRY_RUN_CMD ln -sfn "${cfg.secretsDir}/${secretType.name}" "${secretType.path}"
     ''}
   '';
 
@@ -63,12 +63,12 @@ let
     cfg.identityPaths;
 
   cleanupAndLink = ''
-    $DRY_RUN_CMD _agenix_generation="$(basename "$(readlink "${cfg.secretsDir}")" || echo 0)"
-    $DRY_RUN_CMD (( ++_agenix_generation ))
+    _agenix_generation="$(basename "$(readlink "${cfg.secretsDir}")" || echo 0)"
+    (( ++_agenix_generation ))
     $VERBOSE_ECHO "[agenix] symlinking new secrets to ${cfg.secretsDir} (generation $_agenix_generation)..."
     $DRY_RUN_CMD ln -sfn "${cfg.secretsMountPoint}/$_agenix_generation" "${cfg.secretsDir}"
 
-    $DRY_RUN_CMD (( _agenix_generation > 1 )) && {
+    (( _agenix_generation > 1 )) && {
     $VERBOSE_ECHO "[agenix] removing old secrets (generation $(( _agenix_generation - 1 )))..."
     $DRY_RUN_CMD rm -rf "${cfg.secretsMountPoint}/$(( _agenix_generation - 1 ))"
     }
@@ -156,7 +156,7 @@ in {
     };
   };
 
-  config = lib.mkIf (lib.and cfg.enable cfg.secrets != {}) {
+  config = lib.mkIf (cfg.enable && cfg.secrets != {}) {
     assertions = [
       {
         assertion = cfg.identityPaths != [];
@@ -166,7 +166,7 @@ in {
 
     build.activation.agenix = ''
       ${newGeneration}
-      ${installSecret}
+      ${installSecrets}
     '';
   };
 }
