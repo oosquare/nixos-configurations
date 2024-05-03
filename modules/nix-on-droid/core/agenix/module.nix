@@ -164,7 +164,7 @@ in {
       }
     ];
 
-    build.activation.agenix = ''
+    build.activationAfter.agenix = ''
       ${newGeneration}
       ${installSecrets}
     '';
