@@ -10,6 +10,8 @@
     ./secrets.nix
   ];
 
+  user.shell = "${pkgs.zsh}/bin/zsh";
+
   environment.packages = with pkgs; [];
 
   environment.etcBackupExtension = ".bak";
