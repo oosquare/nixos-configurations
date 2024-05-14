@@ -16,6 +16,11 @@
 
   environment.etcBackupExtension = ".bak";
 
+  environment.sessionVariables = {
+    EDITOR = "hx";
+    VISUAL = "hx";
+  };
+
   time.timeZone = "Asia/Shanghai";
 
   nix.extraOptions = ''
