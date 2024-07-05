@@ -26,7 +26,9 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nur = {
+    nur.url = "github:nix-community/NUR";
+
+    nur-self = {
       url = "github:oo-infty/nur-packages/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -93,6 +95,7 @@
                 home-manager.extraSpecialArgs = { inherit inputs constants; };
               }
     
+              inputs.nur.nixosModules.nur
               inputs.agenix.nixosModules.default
               inputs.agenix-rekey.nixosModules.default
             ];
@@ -117,7 +120,7 @@
                 home-manager.extraSpecialArgs = { inherit inputs constants; };
               }
 
-              # inputs.agenix.nixosModules.default
+              inputs.nur.nixosModules.nur
               inputs.agenix-rekey.nixosModules.default
             ];
           };

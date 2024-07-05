@@ -8,6 +8,7 @@ in {
       qq
       telegram-desktop
       thunderbird
+      config.nur.repos.linyinfeng.wemeet
     ];
   };
 }
