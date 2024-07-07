@@ -176,7 +176,7 @@
         "interval": 1,
         "format": "{:%H:%M}",
         "locale": "C",
-        "tooltip-format": "{:Date: %B %d, %Y\nWeekday: %A\nTime: %T}"
+        "tooltip-format": "Date: {:%B %d, %Y\nWeekday: %A\nTime: %T}"
     }
 }
 
