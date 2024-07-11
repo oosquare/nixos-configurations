@@ -36,4 +36,8 @@
       "workspaces, 1, 6, default"
     ];
   };
+
+  misc = {
+    force_default_wallpaper = 0;
+  };
 }
