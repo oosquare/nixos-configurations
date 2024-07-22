@@ -12,7 +12,7 @@ in {
         noto-fonts
         (lib.mkIf flags.i18n.enable noto-fonts-cjk-sans)
         (lib.mkIf flags.i18n.enable noto-fonts-cjk-serif)
-      ])) ++ (lib.optionals cfg.sourceCodePro (with pkgs; [
+      ])) ++ (lib.optionals cfg.code.sourceCodePro (with pkgs; [
         source-code-pro
       ])) ++ (lib.optionals cfg.emoji (with pkgs; [
         noto-fonts-color-emoji

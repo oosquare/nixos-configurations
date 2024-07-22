@@ -5,7 +5,7 @@
     ui = {
       font = {
         notoFonts = true;
-        sourceCodePro = true;
+        code.sourceCodePro = true;
         emoji = true;
       };
     };

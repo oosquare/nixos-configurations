@@ -17,9 +17,16 @@ in {
           default = false;
         };
 
-        sourceCodePro = mkOption {
-          type = types.bool;
-          default = false;
+        code = {
+          main = mkOption {
+            type = types.enum [ "Source Code Pro" ];
+            default = "Source Code Pro";
+          };
+
+          sourceCodePro = mkOption {
+            type = types.bool;
+            default = false;
+          };
         };
 
         emoji = mkOption {
