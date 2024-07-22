@@ -2,6 +2,13 @@
 
 {
   flags = lib.mkForce {
+    ui = {
+      font = {
+        notoFonts = true;
+        sourceCodePro = true;
+        emoji = true;
+      };
+    };
     packages = {
       desktop = {
         environment = {

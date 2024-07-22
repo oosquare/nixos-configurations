@@ -11,6 +11,23 @@ in {
         type = types.enum [ "One Dark" "Tokyo Night Storm" ];
       };
 
+      font = {
+        notoFonts = mkOption {
+          type = types.bool;
+          default = false;
+        };
+
+        sourceCodePro = mkOption {
+          type = types.bool;
+          default = false;
+        };
+
+        emoji = mkOption {
+          type = types.bool;
+          default = false;
+        };
+      };
+
       theme = {
         window = mkOption {
           description = "The name of a window theme";

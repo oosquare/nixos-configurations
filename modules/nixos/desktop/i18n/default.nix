@@ -10,13 +10,5 @@ in {
       enabled = "fcitx5";
       fcitx5.addons = [ pkgs.fcitx5-chinese-addons ];
     };
-    
-    fonts = {
-      packages = with pkgs; [
-        noto-fonts
-        noto-fonts-cjk-sans
-        noto-fonts-cjk-serif
-      ];
-    };
   };
 }
