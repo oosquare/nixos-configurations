@@ -8,8 +8,8 @@ in {
   
     home.file.".config/zellij/config.kdl".source = pkgs.substitute {
       src = ./config.kdl;
-      replacements = [
-        "--replace-fail @@%%xdg-config-home%%@@ ${config.xdg.configHome}"
+      substitutions = [
+        "--replace-fail" "@@%%xdg-config-home%%@@" "${config.xdg.configHome}"
       ];
     };
   

@@ -14,7 +14,7 @@ in {
   config = lib.mkIf flags.enable {
     home.file.".config/waybar/config".source = pkgs.substitute {
       src = ./config;
-      replacements = [
+      substitutions = [
         "--replace-fail" "@@%%song-info%%@@" "${song-info}"
         "--replace-fail" "@@%%alacritty-wrapper%%@@" "${alacritty-wrapper}"
       ];
