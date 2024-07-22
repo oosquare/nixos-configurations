@@ -5,7 +5,7 @@ let
 in {
   config = lib.mkIf flags.enable {
     home.packages = with pkgs; [
-      firefox-devedition-bin
+      firefox
     ];
   };
 }

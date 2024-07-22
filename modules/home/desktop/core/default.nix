@@ -7,7 +7,7 @@ in {
     ./alacritty
     ./fontconfig
     ./gtk
-    ./qt
+    # ./qt
     ./xdg
   ];
   

@@ -85,10 +85,18 @@ in {
             default = with flags.packages.desktop.environment; builtins.any (x: x.enable) [
               gnome
               hyprland
+              plasma
             ];
           };
 
           gnome = {
+            enable = mkOption {
+              type = types.bool;
+              default = false;
+            };
+          };
+
+          plasma = {
             enable = mkOption {
               type = types.bool;
               default = false;

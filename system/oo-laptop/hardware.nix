@@ -26,13 +26,13 @@
   # Filesystem
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/da0a89e7-d64d-48d8-a81e-13f7c02855e0";
+      device = "/dev/disk/by-uuid/1a99a496-b530-4604-b8fd-4277246f4d21";
       fsType = "btrfs";
       options = [ "subvol=@rootfs" "compress=zstd" ];
     };
 
     "/home" = {
-      device = "/dev/disk/by-uuid/da0a89e7-d64d-48d8-a81e-13f7c02855e0";
+      device = "/dev/disk/by-uuid/1a99a496-b530-4604-b8fd-4277246f4d21";
       fsType = "btrfs";
       options = [ "subvol=@home" "compress=zstd" ];
     };
@@ -43,7 +43,7 @@
     };
 
     "/nix" = {
-      device = "/dev/disk/by-uuid/da0a89e7-d64d-48d8-a81e-13f7c02855e0";
+      device = "/dev/disk/by-uuid/1a99a496-b530-4604-b8fd-4277246f4d21";
       fsType = "btrfs";
       options = [ "subvol=@nix" "compress=zstd" "noatime" ];
     };
@@ -61,7 +61,7 @@
   # Driver
   services.xserver.videoDrivers = [
     "modesetting"
-    "nvidia"
+    # "nvidia"
   ];
 
   hardware.opengl = {
@@ -73,19 +73,19 @@
     ];
   };
 
-  hardware.nvidia = {
-    modesetting.enable = true;
+  # hardware.nvidia = {
+  #   modesetting.enable = true;
 
-    prime = {
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
+  #   prime = {
+  #     offload = {
+  #       enable = true;
+  #       enableOffloadCmd = true;
+  #     };
 
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-  };
+  #     intelBusId = "PCI:0:2:0";
+  #     nvidiaBusId = "PCI:1:0:0";
+  #   };
+  # };
 
   # Power management
   services.power-profiles-daemon.enable = false;

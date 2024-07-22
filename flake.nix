@@ -4,9 +4,9 @@
   nixConfig = {
     substituters = [
       # Mirror sites of the official cache server
-      # "https://mirrors.ustc.edu.cn/nix-channels/store"
-      # "https://mirror.sjtu.edu.cn/nix-channels/store"
-      # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://mirrors.ustc.edu.cn/nix-channels/store"
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
 
       # NixOS's official cache server
       "https://cache.nixos.org"
@@ -127,7 +127,7 @@
 
         agenix-rekey = inputs.agenix-rekey.configure {
           userFlake = self;
-          nodes = self.nixosConfigurations // self.nixOnDroidConfigurations;
+          nodes = self.nixosConfigurations;# // self.nixOnDroidConfigurations;
         };
       };
     };

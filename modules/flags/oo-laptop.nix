@@ -13,6 +13,10 @@
       desktop = {
         environment = {
           gnome = {
+            enable = false;
+          };
+
+          plasma = {
             enable = true;
           };
 
