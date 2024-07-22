@@ -93,6 +93,7 @@
                 home-manager.useUserPackages = true;
                 home-manager.users.${constants.username} = import ./home/${hostname};
                 home-manager.extraSpecialArgs = { inherit inputs constants; };
+                home-manager.backupFileExtension = "bak";
               }
     
               inputs.nur.nixosModules.nur

@@ -61,7 +61,7 @@
   # Driver
   services.xserver.videoDrivers = [
     "modesetting"
-    # "nvidia"
+    "nvidia"
   ];
 
   hardware.opengl = {
@@ -73,19 +73,19 @@
     ];
   };
 
-  # hardware.nvidia = {
-  #   modesetting.enable = true;
+  hardware.nvidia = {
+    modesetting.enable = true;
 
-  #   prime = {
-  #     offload = {
-  #       enable = true;
-  #       enableOffloadCmd = true;
-  #     };
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
 
-  #     intelBusId = "PCI:0:2:0";
-  #     nvidiaBusId = "PCI:1:0:0";
-  #   };
-  # };
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
 
   # Power management
   services.power-profiles-daemon.enable = false;
