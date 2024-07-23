@@ -10,7 +10,7 @@ in {
   ];
 
   config = lib.mkIf flags.enable {
-    services.xserver.libinput.enable = true;
+    services.libinput.enable = true;
     services.printing.enable = true;
   };
 }

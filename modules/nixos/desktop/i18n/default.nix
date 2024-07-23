@@ -5,10 +5,10 @@ let
 in {
   config = lib.mkIf flags.enable {
     i18n.defaultLocale = "zh_CN.UTF-8";
-  
-    i18n.inputMethod = {
-      enabled = "fcitx5";
-      fcitx5.addons = [ pkgs.fcitx5-chinese-addons ];
+    i18n.inputMethod.enable = true;
+    i18n.inputMethod.type = "fcitx5";
+    i18n.inputMethod.fcitx5 = {
+      addons = with pkgs; [ fcitx5-chinese-addons ];
     };
   };
 }
