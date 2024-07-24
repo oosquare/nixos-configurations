@@ -32,11 +32,11 @@ let
     { key = "E"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = "nautilus"; }
     { key = "V"; modifiers = [ "SUPER" ]; dispatcher = "togglefloating"; }
     { key = "F"; modifiers = [ "SUPER" ]; dispatcher = "fullscreen"; args = "1"; }
-    { key = "R"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = launcher; }
+    { key = "space"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = launcher; }
     { key = "P"; modifiers = [ "SUPER" ]; dispatcher = "togglesplit"; }
     { key = "A"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = clipboard; }
-    { key = "S"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = "${screenshot} selection ${screenshotDir}"; }
-    { key = "S"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "exec"; args = "${screenshot} fullscreen ${screenshotDir}"; }
+    { key = "S"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = "${screenshot} fullscreen ${screenshotDir}"; }
+    { key = "S"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "exec"; args = "${screenshot} selection ${screenshotDir}"; }
     { key = "S"; modifiers = [ "SUPER CTRL" ]; dispatcher = "exec"; args = "${screenshot} active ${screenshotDir}"; }
     { key = "L"; modifiers = [ "SUPER SHIFT" ]; dispatcher = "exec"; args = locker; }
 
