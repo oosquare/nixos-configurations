@@ -58,6 +58,12 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs = { self, flake-parts, ... }@inputs:
@@ -72,6 +78,7 @@
             packages = with pkgs; [
               nil
               inputs'.agenix-rekey.packages.default
+
             ];
           };
       };
@@ -94,6 +101,7 @@
                 home-manager.users.${constants.username} = import ./home/${hostname};
                 home-manager.extraSpecialArgs = { inherit inputs constants; };
                 home-manager.backupFileExtension = "bak";
+                home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
               }
     
               inputs.nur.nixosModules.nur
@@ -128,7 +136,7 @@
 
         agenix-rekey = inputs.agenix-rekey.configure {
           userFlake = self;
-          nodes = self.nixosConfigurations;# // self.nixOnDroidConfigurations;
+          nodes = self.nixosConfigurations // self.nixOnDroidConfigurations;
         };
       };
     };

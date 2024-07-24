@@ -4,6 +4,7 @@
   imports = [
     ./dependencies
     ./hyprland
+    ./plasma
   ];
 }
 
