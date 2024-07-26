@@ -7,6 +7,7 @@ in {
     ./core
     ./environment
     ./i18n
+    ./network
   ];
 
   config = lib.mkIf flags.enable {
