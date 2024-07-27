@@ -26,6 +26,10 @@ in {
       kwinrc.Desktops.Id_8 = "ddf74749-34e5-4ec9-9f42-e8172e353453";
       kwinrc.Desktops.Id_9 = "11b5f9ee-4c82-4189-a713-f9c1e3ed166c";
       kwinrc.Desktops.Number = 9;
+
+      kwinrc.Plugins.desktopchangeosdEnabled = true;
+      kwinrc.Plugins.dimscreenEnabled = true;
+      kwinrc.Script-desktopchangeosd.PopupHideDelay = 250;
     };
   };
 }

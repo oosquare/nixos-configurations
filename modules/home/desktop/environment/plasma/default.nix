@@ -7,6 +7,7 @@ in {
     ./input.nix
     ./keybindings.nix
     ./misc.nix
+    ./rule.nix
     ./ui.nix
   ];
 
