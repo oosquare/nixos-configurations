@@ -2,6 +2,7 @@
 
 {
   imports = [
-    ./ssh
+    ./ssh-module.nix
+    ./ssh.nix
   ];
 }

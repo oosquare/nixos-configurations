@@ -2,10 +2,10 @@
 
 {
   imports = [
-    ./bluetooth
-    ./sound
-    ./network
-    ./proxy
-    ./ssh
+    ./bluetooth.nix
+    ./sound.nix
+    ./network.nix
+    ./proxy.nix
+    ./ssh.nix
   ];
 }

@@ -4,9 +4,10 @@
   imports = [
     ./core
     ./environment
-    ./communication
     ./multimedia
-    ./network
-    ./production
+
+    ./communication.nix
+    ./network.nix
+    ./production.nix
   ];
 }

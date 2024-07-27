@@ -5,23 +5,23 @@ let
 
   terminal = pkgs.writeScript
     "alacritty-wrapper"
-    (builtins.readFile ../dependencies/scripts/alacritty-wrapper.sh);
+    (builtins.readFile ../../core/scripts/alacritty-wrapper.sh);
 
   launcher = "tofi-drun --terminal '${terminal} -e' | xargs -I % sh -c '%'";
 
   screenshot = pkgs.writeScript
     "screen-capturer"
-    (builtins.readFile ../dependencies/scripts/screen-capturer.sh);
+    (builtins.readFile ../../core/scripts/screen-capturer.sh);
 
   screenshotDir = "~/userdata/pictures/screenshots";
 
   clipboard = pkgs.writeScript
     "clipboard-selector"
-    (builtins.readFile ../dependencies/scripts/clipboard-selector.sh);
+    (builtins.readFile ../../core/scripts/clipboard-selector.sh);
 
   locker = pkgs.writeScript
     "swaylock-wrapper"
-    (builtins.readFile ../dependencies/scripts/swaylock-wrapper.sh);
+    (builtins.readFile ../../core/scripts/swaylock-wrapper.sh);
 
   keybindings = [
     { key = "W"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = browser; }

@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./gnome
-    ./hyprland
-    ./plasma
+    ./gnome.nix
+    ./hyprland.nix
+    ./plasma.nix
   ];
 }

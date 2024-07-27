@@ -4,11 +4,11 @@ let
   flags = config.flags.packages.desktop.multimedia;
 in {
   imports = [
-    ./cava
-    ./mpd-mpris
-    ./mpd
-    ./mpv
-    ./ncmpcpp
+    ./cava.nix
+    ./mpd-mpris.nix
+    ./mpd.nix
+    ./mpv.nix
+    ./ncmpcpp.nix
   ];
 
   config = lib.mkIf flags.enable {

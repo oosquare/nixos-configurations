@@ -4,14 +4,14 @@ let
   cfg = config.services.ssh;
 in {
   options.services.ssh = {
-    enable = lib.mkEnableOption (lib.mdDoc "Whether to enable the SSH service");
+    enable = lib.mkEnableOption "Whether to enable the SSH service";
 
     package = lib.mkPackageOption pkgs "openssh" {};
 
     dataPath = lib.mkOption {
       type = lib.types.str;
       default = "${config.user.home}/.sshd";
-      description = lib.mdDoc ''
+      description = ''
         Path to store sshd configurations.
       '';
     };
@@ -19,7 +19,7 @@ in {
     tmpPath = lib.mkOption {
       type = lib.types.str;
       default = "${cfg.dataPath}-tmp";
-      description = lib.mdDoc ''
+      description = ''
         Path to store sshd configurations temporarily.
       '';
     };
@@ -27,7 +27,7 @@ in {
     port = lib.mkOption {
       type = lib.types.port;
       default = 8022;
-      description = lib.mdDoc ''
+      description = ''
         Which port should sshd listen on.
       '';
     };
@@ -35,7 +35,7 @@ in {
     authorizedKeys = lib.mkOption {
       type = lib.types.lines;
       default = "";
-      description = lib.mdDoc ''
+      description = ''
         Authorized keys seperated by lines.
       '';
     };

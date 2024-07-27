@@ -1,11 +1,45 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, constants, ... }@args:
 
 {
   imports = [
-    ./core
-    ./cli
     ./desktop
     ./development
     ./services
+
+    ./cli.nix
   ];
+
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  nix.settings.trusted-users = [ constants.username ];
+
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 7d";
+  };
+
+  nix.optimise = {
+    automatic = true;
+    dates = [ "weekly" ];
+  };
+
+  nixpkgs.overlays = import ../../overlays args;
+  nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-27.3.11"
+    "electron-28.3.3"
+  ];
+
+  environment.systemPackages = with pkgs; [
+    curl
+    helix
+    trash-cli
+  ];
+  
+  programs.zsh.enable = true;
 }

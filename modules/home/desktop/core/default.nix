@@ -8,7 +8,11 @@ in {
     ./fontconfig
     ./gtk
     ./qt
-    ./xdg
+    ./waybar
+
+    ./mako.nix
+    ./tofi.nix
+    ./xdg.nix
   ];
   
   config = lib.mkIf flags.enable {

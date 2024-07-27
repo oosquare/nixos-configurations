@@ -6,6 +6,7 @@
     ./core
     ./cli
     ./desktop
-    ./development
+
+    ./development.nix
   ];
 }

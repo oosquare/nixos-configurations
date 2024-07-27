@@ -4,9 +4,9 @@ let
   flags = config.flags.packages.desktop;
 in {
   imports = [
-    ./cursor
-    ./icon
-    ./window
+    ./cursor.nix
+    ./icon.nix
+    ./window.nix
   ];
 
   config = lib.mkIf flags.enable {

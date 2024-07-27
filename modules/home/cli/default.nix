@@ -4,11 +4,12 @@ let
   flags = config.flags.packages.cli;
 in {
   imports = [
-    ./atuin
     ./fzf
-    ./git
     ./zellij
-    ./gh
+
+    ./atuin.nix
+    ./git.nix
+    ./gh.nix
   ];
 
   config = lib.mkIf flags.enable {
