@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  browser = "firefox-developer-edition";
+  browser = "firefox";
 
   terminal = pkgs.writeScript
     "alacritty-wrapper"

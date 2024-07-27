@@ -13,16 +13,10 @@ let
     SDL_VIDEODRIVER = "wayland";
     CLUTTER_BACKEND = "wayland";
 
-    # Themes
-    QT_QPA_PLATFORMTHEME = "qt5ct";
-
     # UI
     QT_AUTO_SCREEN_SCALE_FACTOR = 1;
     QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
     
-    # # Viedo card preference
-    # WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card2";
-
     # XWayland
     GDK_SCALE = 2;
   };
