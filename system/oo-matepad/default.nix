@@ -12,7 +12,7 @@
 
   user.shell = "${pkgs.zsh}/bin/zsh";
 
-  environment.packages = with pkgs; [];
+  environment.packages = with pkgs; [ scryer-prolog ];
 
   environment.etcBackupExtension = ".bak";
 

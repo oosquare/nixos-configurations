@@ -115,6 +115,7 @@
           constants = (import ./modules/constants.nix) // { inherit hostname; };
         in
           inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+            pkgs = import inputs.nixpkgs { system = "aarch64-linux"; };
             extraSpecialArgs = { inherit inputs constants; };
             home-manager-path = inputs.home-manager.outPath;
     
@@ -127,6 +128,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = { inherit inputs constants; };
+                home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
               }
 
               inputs.nur.nixosModules.nur
