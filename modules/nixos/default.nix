@@ -6,6 +6,7 @@
     ./development
     ./services
 
+    ./core.nix
     ./cli.nix
   ];
 
@@ -34,12 +35,4 @@
     "electron-27.3.11"
     "electron-28.3.3"
   ];
-
-  environment.systemPackages = with pkgs; [
-    curl
-    helix
-    trash-cli
-  ];
-  
-  programs.zsh.enable = true;
 }
