@@ -165,8 +165,14 @@ in {
     ];
 
     build.activationAfter.agenix = ''
-      ${newGeneration}
-      ${installSecrets}
+      function activation-block() {
+        ${newGeneration}
+        ${installSecrets}
+      }
+
+      # If age fails to decrypt secrets, the above codes will interrupt the
+      # activation process. Add `true` here to make sure that it can continue.
+      activation-block || true
     '';
   };
 }
