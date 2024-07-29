@@ -74,9 +74,9 @@
         "return-type": "json",
         "interval": 1,
         "max-length": 20,
-        "exec": "@@%%song-info%%@@ metadata",
+        "exec": "waybar-song-info metadata",
         "on-click": "playerctl play-pause",
-        "on-click-right": "@@%%alacritty-wrapper%%@@ -e cava",
+        "on-click-right": "alacritty-wrapper -e cava",
         "on-click-middle": "playerctl stop",
         "on-scroll-up": "playerctl next",
         "on-scroll-down": "playerctl previous"
@@ -90,9 +90,9 @@
         },
         "return-type": "json",
         "interval": 1,
-        "exec": "@@%%song-info%%@@ progress",
+        "exec": "waybar-song-info progress",
         "on-click": "playerctl play-pause",
-        "on-click-right": "@@%%alacritty-wrapper%%@@ -e cava",
+        "on-click-right": "alacritty-wrapper -e cava",
         "on-click-middle": "playerctl stop",
         "on-scroll-up": "playerctl next",
         "on-scroll-down": "playerctl previous"

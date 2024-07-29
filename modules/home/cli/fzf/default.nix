@@ -3,11 +3,14 @@
 let
   flags = config.flags.packages.cli;
 
-  file-preview = pkgs.writeScript "file-preview" (builtins.readFile ./file-preview.sh);
   fzf-completions = pkgs.writeScript "fzf-completions" (builtins.readFile ./fzf-completions.sh);
-  interactive-ripgrep = pkgs.writeScript "interactive-ripgrep" (builtins.readFile ./interactive-ripgrep.sh);
 in {
   config = lib.mkIf flags.enable {
+    home.packages = [
+      (pkgs.writeScriptBin "preview-file" (builtins.readFile ./preview-file.sh))
+      (pkgs.writeScriptBin "rgi" (builtins.readFile ./interactive-ripgrep.sh))
+    ];
+
     programs.fzf = {
       enable = true;
   
@@ -21,13 +24,12 @@ in {
         "--scroll-off=5"
         "--cycle"
         "--preview-window=border-left"
-        "--preview='${file-preview} {}'"
+        "--preview='preview-file {}'"
       ];
     };
   
     programs.zsh.customAutoloadScripts = [
       fzf-completions
-      interactive-ripgrep
     ];
   };
 }

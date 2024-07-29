@@ -2,26 +2,12 @@
 
 let
   browser = "firefox";
-
-  terminal = pkgs.writeScript
-    "alacritty-wrapper"
-    (builtins.readFile ../../core/scripts/alacritty-wrapper.sh);
-
+  terminal = "alacritty-wrapper";
   launcher = "tofi-drun --terminal '${terminal} -e' | xargs -I % sh -c '%'";
-
-  screenshot = pkgs.writeScript
-    "screen-capturer"
-    (builtins.readFile ../../core/scripts/screen-capturer.sh);
-
+  screenshot = "capture-screen";
   screenshotDir = "~/userdata/pictures/screenshots";
-
-  clipboard = pkgs.writeScript
-    "clipboard-selector"
-    (builtins.readFile ../../core/scripts/clipboard-selector.sh);
-
-  locker = pkgs.writeScript
-    "swaylock-wrapper"
-    (builtins.readFile ../../core/scripts/swaylock-wrapper.sh);
+  clipboard = "clipboard-selector";
+  locker = "swaylock-wrapper";
 
   keybindings = [
     { key = "W"; modifiers = [ "SUPER" ]; dispatcher = "exec"; args = browser; }

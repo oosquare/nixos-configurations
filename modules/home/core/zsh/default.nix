@@ -3,10 +3,6 @@
 let
   cfg = config.programs.zsh;
   flags = config.flags.packages.core;
-
-  git-branch = pkgs.writeScript
-    "git-branch"
-    (builtins.readFile ./git-branch.sh);
 in {
   options.programs.zsh = {
     customAutoloadScripts = lib.mkOption {
@@ -17,6 +13,10 @@ in {
   };
 
   config = lib.mkIf flags.enable {
+    home.packages = [
+      (pkgs.writeScriptBin "git-branch-format" (builtins.readFile ./git-branch-format.sh))
+    ];
+
     programs.zsh = {
       enable = true;
       autosuggestion.enable = true;
@@ -33,7 +33,7 @@ in {
 
         # Set prompt style
         setopt prompt_subst
-        export PS1='%{%F{226}%}%n%{%F{220}%}@%{%F{214}%}%m%{%F{red}%}$(get_branch) %{%F{45}%}%~
+        export PS1='%{%F{226}%}%n%{%F{220}%}@%{%F{214}%}%m%{%F{red}%}$(git-branch-format) %{%F{45}%}%~
         %{%f%}> '
 
         export RPROMPT="%F{red}%(?..%?)%f"
@@ -46,8 +46,6 @@ in {
         rm = "echo 'rm: command is disabled for security'";
         tsp = "trash-put";
       };
-
-      customAutoloadScripts = [ git-branch ];
     };
   };
 }

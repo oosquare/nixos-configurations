@@ -8,6 +8,7 @@ in {
     ./fontconfig
     ./gtk
     ./qt
+    ./scripts
     ./waybar
 
     ./mako.nix
