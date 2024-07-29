@@ -5,6 +5,7 @@ let
 in {
   imports = [
     ./fzf
+    ./scripts
     ./zellij
 
     ./atuin.nix

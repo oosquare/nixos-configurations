@@ -3,11 +3,11 @@
 {
   imports = [
     ./desktop
-    ./development
     ./services
 
     ./core.nix
     ./cli.nix
+    ./development.nix
   ];
 
   nix.settings.experimental-features = [
