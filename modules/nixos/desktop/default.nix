@@ -24,6 +24,8 @@ in {
         (lib.mkIf flags.i18n.enable noto-fonts-cjk-serif)
       ]) ++ lib.optionals cfg.code.sourceCodePro (with pkgs; [
         source-code-pro
+      ]) ++ lib.optionals cfg.code.cascadiaCode (with pkgs; [
+        cascadia-code
       ]) ++ lib.optionals cfg.emoji (with pkgs; [
         noto-fonts-color-emoji
         (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })

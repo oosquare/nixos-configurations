@@ -5,7 +5,9 @@
     ui = {
       font = {
         notoFonts = true;
+        code.main = "Cascadia Mono";
         code.sourceCodePro = true;
+        code.cascadiaCode = true;
         emoji = true;
       };
     };

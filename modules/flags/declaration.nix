@@ -19,11 +19,16 @@ in {
 
         code = {
           main = mkOption {
-            type = types.enum [ "Source Code Pro" ];
+            type = types.str;
             default = "Source Code Pro";
           };
 
           sourceCodePro = mkOption {
+            type = types.bool;
+            default = false;
+          };
+
+          cascadiaCode = mkOption {
             type = types.bool;
             default = false;
           };
