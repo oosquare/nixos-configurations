@@ -1,4 +1,4 @@
-{ config, lib, pkgs, constants, ... }@args:
+{ config, lib, pkgs, constants, inputs, ... }@args:
 
 {
   imports = [
@@ -35,4 +35,8 @@
     "electron-27.3.11"
     "electron-28.3.3"
   ];
+
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
+  nix.settings.nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
 }

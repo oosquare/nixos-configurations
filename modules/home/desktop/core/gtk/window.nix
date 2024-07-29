@@ -18,7 +18,7 @@ in {
     };
   };
 
-  home.sessionVariables = lib.optionalAttrs (flags.ui.theme.mode == "Dark") {
-    GTK_THEME = "Adwaita-dark";
-  };
+  home.sessionVariables = lib.optionalAttrs
+    (flags.ui.theme.window == "Adwaita" && flags.ui.theme.mode == "Dark")
+    { GTK_THEME = "Adwaita-dark"; };
 }

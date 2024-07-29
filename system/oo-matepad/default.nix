@@ -12,7 +12,7 @@
 
   user.shell = "${pkgs.zsh}/bin/zsh";
 
-  environment.packages = with pkgs; [ scryer-prolog ];
+  environment.packages = with pkgs; [];
 
   environment.etcBackupExtension = ".bak";
 
@@ -22,10 +22,6 @@
   };
 
   time.timeZone = "Asia/Shanghai";
-
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
 
   system.stateVersion = "24.05";
 }

@@ -27,6 +27,8 @@ in {
       window = {
         decorations = "None";
         opacity = 0.7;
+        blur = true;
+        startup_mode = "Maximized";
   
         padding = {
           x = 4;

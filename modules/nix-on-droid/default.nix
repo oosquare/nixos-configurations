@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -7,4 +7,10 @@
 
     ./cli.nix
   ];
+
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
 }
