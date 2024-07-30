@@ -5,9 +5,9 @@
     ./core
     ./environment
     ./multimedia
+    ./network
 
     ./communication.nix
-    ./network.nix
     ./production.nix
   ];
 }
