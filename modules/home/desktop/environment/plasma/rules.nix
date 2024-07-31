@@ -8,8 +8,7 @@ in {
       {
         description = "Transparent Exclude";
         match = {
-          window-class.value = "^.*(firefox|Alacritty).*$";
-          window-class.type = "regex";
+          window-class = { type = "regex"; value = "firefox|Alacritty"; };
         };
         apply = {
           opacityactive = { value = "100"; apply = "force"; };
@@ -22,6 +21,16 @@ in {
         apply = {
           opacityactive = { value = "85"; apply = "force"; };
           opacityinactive = { value = "85"; apply = "force"; };
+        };
+      }
+      {
+        description = "Startup Maximized";
+        match = {
+          window-class = { type = "regex"; value = "systemsettings|plasma-systemmonitor"; };
+        };
+        apply = {
+          maximizehoriz = { value = true; apply = "initially"; };
+          maximizevert = { value = true; apply = "initially"; };
         };
       }
     ];

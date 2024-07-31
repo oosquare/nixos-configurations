@@ -12,10 +12,6 @@
     ./secrets.nix
   ];
 
-  services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
   networking.hostName = "oo-laptop";
 
   time.timeZone = "Asia/Shanghai";
