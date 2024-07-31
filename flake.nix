@@ -70,7 +70,9 @@
     };
   };
 
-  outputs = { self, flake-parts, ... }@inputs:
+  outputs = { self, flake-parts, ... }@inputs: let
+    root = ./.;
+  in
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" "aarch64-linux" ];
 
@@ -94,7 +96,7 @@
         in
           inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
-            specialArgs = { inherit inputs constants; };
+            specialArgs = { inherit inputs constants root; };
     
             modules = [
               ./system/${hostname}
@@ -103,7 +105,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.${constants.username} = import ./home/${hostname};
-                home-manager.extraSpecialArgs = { inherit inputs constants; };
+                home-manager.extraSpecialArgs = { inherit inputs constants root; };
                 home-manager.backupFileExtension = "bak";
                 home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
               }
@@ -120,7 +122,7 @@
         in
           inputs.nix-on-droid.lib.nixOnDroidConfiguration {
             pkgs = import inputs.nixpkgs { system = "aarch64-linux"; };
-            extraSpecialArgs = { inherit inputs constants; };
+            extraSpecialArgs = { inherit inputs constants root; };
             home-manager-path = inputs.home-manager.outPath;
     
             modules = [
@@ -128,10 +130,10 @@
     
               {
                 home-manager.config = ./home/${hostname};
-                home-manager.backupFileExtension = "hm-bak";
+                home-manager.backupFileExtension = "bak";
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = { inherit inputs constants; };
+                home-manager.extraSpecialArgs = { inherit inputs constants root; };
                 home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
               }
 

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, root, ... }:
 
 let
   flags = config.flags.packages.desktop.environment.plasma;
@@ -13,6 +13,7 @@ in {
         theme = "Vimix-cursors";
         size = 24;
       };
+      wallpaper = root + /assets/wallpapers/milky-way.png;
     };
 
     programs.plasma.panels = lib.singleton {
