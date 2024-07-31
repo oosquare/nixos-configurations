@@ -16,7 +16,6 @@ in {
     # Additional packages that enhance Hyprland's functionality
     environment.systemPackages = with pkgs; [
       cliphist
-      easyeffects
       grim
       helvum
       mako
