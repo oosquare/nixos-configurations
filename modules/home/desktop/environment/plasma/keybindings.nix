@@ -17,7 +17,6 @@ in {
       kwin."Switch to Desktop 6" = "Meta+6";
       kwin."Switch to Desktop 7" = "Meta+7";
       kwin."Switch to Desktop 8" = "Meta+8";
-      kwin."Switch to Desktop 9" = "Meta+9";
       kwin."Window Close" = [ "Alt+F4" "Meta+C" ];
       kwin."Window Maximize" = "Meta+F";
       kwin."Window One Desktop Down" = "Meta+Shift+Down";
@@ -32,7 +31,6 @@ in {
       kwin."Window to Desktop 6" = "Meta+^";
       kwin."Window to Desktop 7" = "Meta+&";
       kwin."Window to Desktop 8" = "Meta+*";
-      kwin."Window to Desktop 9" = "Meta+(";
       kwin."Window to Next Screen" = "none";
       kwin."Window to Previous Screen" = "none";
       kwin."Overview" = "Meta+Tab";
@@ -45,7 +43,6 @@ in {
       plasmashell."activate task manager entry 6" = "none";
       plasmashell."activate task manager entry 7" = "none";
       plasmashell."activate task manager entry 8" = "none";
-      plasmashell."activate task manager entry 9" = "none";
       plasmashell."stop current activity" = "none";
       plasmashell."manage activities" = "none";
       plasmashell."show-on-mouse-pos" = "Meta+A";
