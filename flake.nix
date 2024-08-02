@@ -84,7 +84,6 @@
             packages = with pkgs; [
               nil
               inputs'.agenix-rekey.packages.default
-
             ];
           };
       };

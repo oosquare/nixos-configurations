@@ -20,7 +20,7 @@ in {
         music = "${config.home.homeDirectory}/userdata/music";
         pictures = "${config.home.homeDirectory}/userdata/pictures";
         publicShare = "${config.home.homeDirectory}/public";
-        templates = "${config.home.homeDirectory}/templates";
+        templates = "${config.home.homeDirectory}/userdata/templates";
         videos = "${config.home.homeDirectory}/userdata/videos";
       };
     };
