@@ -63,6 +63,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    to-concentrate = {
+      url = "github:oo-infty/to-concentrate";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
   };
 
   outputs = { self, flake-parts, ... }@inputs: let

@@ -7,6 +7,7 @@ in {
     home.packages = with pkgs; [
       logseq
       newsflash
+      inputs.to-concentrate.packages.${pkgs.system}.to-concentrate
     ];
   };
 }

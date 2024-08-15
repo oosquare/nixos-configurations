@@ -334,6 +334,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1718428119,
+        "narHash": "sha256-WdWDpNaq6u1IPtxtYHHWpl5BmabtpmLnMAx0RdJ/vo8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "e6cea36f83499eb4e9cd184c8a8e823296b50ad5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nmd": {
       "inputs": {
         "nixpkgs": [
@@ -469,7 +485,26 @@
         "nixpkgs": "nixpkgs",
         "nur": "nur",
         "nur-self": "nur-self",
-        "plasma-manager": "plasma-manager"
+        "plasma-manager": "plasma-manager",
+        "to-concentrate": "to-concentrate"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1723688259,
+        "narHash": "sha256-WzeUR1MG9MnJnh9T7qcVe/v12qHvJvzdc3Z5HCeE2ns=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "6e75319846684326d900daff1e2e11338cc80d2b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
       }
     },
     "scss-reset": {
@@ -530,6 +565,30 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "to-concentrate": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1723724864,
+        "narHash": "sha256-RQZMMhFZtMSMiHJS9AGECnYE2Yd4UvT420B7NrkWUQ4=",
+        "owner": "oo-infty",
+        "repo": "to-concentrate",
+        "rev": "6cc380fb288cc3f1f1e0ca86d3079e48555f2755",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oo-infty",
+        "repo": "to-concentrate",
         "type": "github"
       }
     }
