@@ -24,7 +24,6 @@
 
           hyprland = {
             enable = true;
-            dev = false;
           };
         };
 

@@ -113,11 +113,6 @@ in {
               type = types.bool;
               default = false;
             };
-            
-            dev = mkOption {
-              type = types.bool;
-              default = false;
-            };
           };
         };
 

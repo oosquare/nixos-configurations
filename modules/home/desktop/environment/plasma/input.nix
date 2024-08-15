@@ -6,7 +6,10 @@ in {
   config = lib.mkIf flags.enable {
     programs.plasma.input = {
       keyboard = {
-        layouts = [ "us" ];
+        layouts = lib.singleton {
+          layout = "us";
+        };
+
         repeatDelay = 250;
       };
 

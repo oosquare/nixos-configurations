@@ -7,10 +7,6 @@ in {
   config = lib.mkIf flags.enable {
     programs.hyprland = {
       enable = true;
-      package = if flags.dev then
-        inputs.hyprland.packages.${pkgs.system}.hyprland
-      else
-        pkgs.hyprland;
     };
   
     # Additional packages that enhance Hyprland's functionality

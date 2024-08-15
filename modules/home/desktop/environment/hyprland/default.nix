@@ -8,11 +8,6 @@ in {
       enable = true;
       systemd.enable = false;
 
-      package = if flags.dev then
-        inputs.hyprland.packages.${pkgs.system}.hyprland
-      else
-        pkgs.hyprland;
-  
       settings = lib.attrsets.mergeAttrsList [
         (import ./environment.nix args)
         (import ./startup.nix args)
