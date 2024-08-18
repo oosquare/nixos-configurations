@@ -46,6 +46,7 @@ in {
         gd = "git diff HEAD";
         rm = "echo 'rm: command is disabled for security'";
         tsp = "trash-put";
+        x = ''__XPLR_CD_OUTPUT=$(xplr); cd "$__XPLR_CD_OUTPUT" > /dev/null 2>&1 || echo $__XPLR_CD_OUTPUT; unset __XPLR_CD_OUTPUT'';
       };
     };
   };

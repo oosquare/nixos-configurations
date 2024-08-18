@@ -6,6 +6,7 @@ in {
   imports = [
     ./fzf
     ./scripts
+    ./xplr
     ./zellij
 
     ./atuin.nix
