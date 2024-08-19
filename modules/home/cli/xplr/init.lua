@@ -1,3 +1,5 @@
+version = "0.21.9"
+
 function clone(obj, seen)
   if type(obj) ~= 'table' then return obj end
   if seen and seen[obj] then return seen[obj] end
@@ -81,7 +83,7 @@ xplr.config.modes.builtin.default.key_bindings.on_key["<"] = {
 xplr.config.modes.builtin.default.key_bindings.on_key["v"] = {
   help = "visual",
   messages = {
-    { SwitchModeCustom = "visual" },
+    { CallLuaSilently = "custom.visual_mode_init" },
   }
 }
 
@@ -265,15 +267,234 @@ xplr.config.modes.custom.visual = {
       ["v"] = {
         help = "exit visual mode",
         messages = {
-          "PopMode",
+          { CallLuaSilently = "custom.visual_mode_exit" },
         }
       },
 
       -- Navigation
-      -- TODO
+      ["up"] = {
+        help = "up",
+        messages = {
+          { CallLuaSilently = "custom.visual_mode_up" },
+        },
+      },
+      ["down"] = {
+        help = "down",
+        messages = {
+          { CallLuaSilently = "custom.visual_mode_down" },
+        },
+      },
     },
-  }
+  },
 }
+
+-- Visual mode helper functions
+-- bounded_index = xplr.config.general.enforce_bounded_index_navigation
+xplr.fn.custom.visual_mode_init = function(app)
+  -- TODO: Set this dynamically
+  bounded_index = true
+  visual_mode_global_state = "init"
+  visual_mode_global_state_index = clone(app.directory_buffer.focus)
+  return {
+    "ToggleSelection",
+    { SwitchModeCustom = "visual" },
+  }
+end
+
+xplr.fn.custom.visual_mode_exit = function(app)
+  visual_mode_global_state = nil
+  visual_mode_global_state_index = nil
+  return {
+    "PopMode",
+  }
+end
+
+
+function get_previous_index(app)
+  if app.directory_buffer.total == 0 then
+    return nil
+  end
+
+  local index = app.directory_buffer.focus
+
+  if index == 0 then
+    if bounded_index then
+      return nil
+    else
+      return app.directory_buffer.total - 1
+    end
+  else
+    return index - 1
+  end
+end
+
+function get_next_index(app)
+  if app.directory_buffer.total == 0 then
+    return nil
+  end
+
+  local index = app.directory_buffer.focus
+
+  if index == app.directory_buffer.total - 1 then
+    if bounded_index then
+      return nil
+    else
+      return 0
+    end
+  else
+    return index + 1
+  end
+end
+
+xplr.fn.custom.visual_mode_up = function(app)
+  -- Do nothing when there is no node in directory.
+  if app.directory_buffer.total == 0 then
+    return {}
+  end
+
+  local new_index = get_previous_index(app)
+
+  -- Do nothing when can't move focus up.
+  if new_index == nil then
+    return {}
+  end
+
+  if visual_mode_global_state == "init" then
+    if app.directory_buffer.total == 1 then
+      -- Don't move focus when there is only one entry.
+      return {}
+    else
+      visual_mode_global_state = "up_extending"
+      return {
+        "FocusPrevious",
+        "ToggleSelection",
+      }
+    end
+  elseif visual_mode_global_state == "up_extending" then
+    if new_index == visual_mode_global_state_index then
+      -- Will reach the start position and cover the whole buffer.
+      -- (xplr.config.general.enforce_bounded_index_navigation = false)
+      visual_mode_global_state = "up_collapsing"
+      visual_mode_global_state_index = app.directory_buffer.focus
+
+      return {
+        "FocusPrevious"
+      }
+    else
+      return {
+        "FocusPrevious",
+        "ToggleSelection",
+      }
+    end
+  elseif visual_mode_global_state == "up_collapsing" then
+    -- Will reach the start position
+    if new_index == visual_mode_global_state_index then
+      visual_mode_global_state = "init"
+    end
+
+    return {
+      "ToggleSelection",
+      "FocusPrevious",
+    }
+  elseif visual_mode_global_state == "down_extending" then
+    -- Will reach the start position
+    if new_index == visual_mode_global_state_index then
+      visual_mode_global_state = "init"
+    else
+      visual_mode_global_state = "up_collapsing"
+    end
+
+    return {
+      "ToggleSelection",
+      "FocusPrevious",
+    }
+  elseif visual_mode_global_state == "down_collapsing" then
+    visual_mode_global_state = "up_extending"
+    return {
+      "FocusPrevious",
+      "ToggleSelection",
+    }
+  else
+    return {
+      { LogError = "Unknown state: " .. visual_mode_global_state },
+    }
+  end
+end
+
+xplr.fn.custom.visual_mode_down = function(app)
+  -- Do nothing when there is no node in directory.
+  if app.directory_buffer.total == 0 then
+    return {}
+  end
+
+  local new_index = get_next_index(app)
+
+  -- Do nothing when can't move focus up.
+  if new_index == nil then
+    return {}
+  end
+
+  if visual_mode_global_state == "init" then
+    if app.directory_buffer.total == 1 then
+      -- Don't move focus when there is only one entry
+      return {}
+    else
+      visual_mode_global_state = "down_extending"
+      return {
+        "FocusNext",
+        "ToggleSelection",
+      }
+    end
+  elseif visual_mode_global_state == "down_extending" then
+    if new_index == visual_mode_global_state_index then
+      -- Will reach the start position and cover the whole buffer.
+      -- (xplr.config.general.enforce_bounded_index_navigation = false)
+      visual_mode_global_state = "down_collapsing"
+      visual_mode_global_state_index = app.directory_buffer.focus
+
+      return {
+        "FocusNext"
+      }
+    else
+      return {
+        "FocusNext",
+        "ToggleSelection",
+      }
+    end
+  elseif visual_mode_global_state == "down_collapsing" then
+    -- Will reach the start position
+    if new_index == visual_mode_global_state_index then
+      visual_mode_global_state = "init"
+    end
+
+    return {
+      "ToggleSelection",
+      "FocusNext",
+    }
+  elseif visual_mode_global_state == "up_extending" then
+    -- Will reach the start position
+    if new_index == visual_mode_global_state_index then
+      visual_mode_global_state = "init"
+    else
+      visual_mode_global_state = "down_collapsing"
+    end
+
+    return {
+      "ToggleSelection",
+      "FocusNext",
+    }
+  elseif visual_mode_global_state == "up_collapsing" then
+    visual_mode_global_state = "down_extending"
+    return {
+      "FocusNext",
+      "ToggleSelection",
+    }
+  else
+    return {
+      { LogError = "Unknown state: " .. visual_mode_global_state },
+    }
+  end
+end
 
 -- --
 -- UI
