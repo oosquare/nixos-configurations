@@ -23,21 +23,21 @@ require("visual-mode").setup{
     ["I"] = {
       help = "up multi-lines",
       messages = {
-        { CallLuaSilently = "custom.visual_mode_up" },
-        { CallLuaSilently = "custom.visual_mode_up" },
-        { CallLuaSilently = "custom.visual_mode_up" },
-        { CallLuaSilently = "custom.visual_mode_up" },
-        { CallLuaSilently = "custom.visual_mode_up" },
+        { CallLuaSilently = "custom.visual_mode.up" },
+        { CallLuaSilently = "custom.visual_mode.up" },
+        { CallLuaSilently = "custom.visual_mode.up" },
+        { CallLuaSilently = "custom.visual_mode.up" },
+        { CallLuaSilently = "custom.visual_mode.up" },
       },
     },
     ["K"] = {
       help = "down multi-lines",
       messages = {
-        { CallLuaSilently = "custom.visual_mode_down" },
-        { CallLuaSilently = "custom.visual_mode_down" },
-        { CallLuaSilently = "custom.visual_mode_down" },
-        { CallLuaSilently = "custom.visual_mode_down" },
-        { CallLuaSilently = "custom.visual_mode_down" },
+        { CallLuaSilently = "custom.visual_mode.down" },
+        { CallLuaSilently = "custom.visual_mode.down" },
+        { CallLuaSilently = "custom.visual_mode.down" },
+        { CallLuaSilently = "custom.visual_mode.down" },
+        { CallLuaSilently = "custom.visual_mode.down" },
       },
     },
   },
@@ -57,6 +57,12 @@ xplr.config.modes.builtin.default.key_bindings.on_key["i"] =
   xplr_original.config.modes.builtin.default.key_bindings.on_key["up"]
 xplr.config.modes.builtin.default.key_bindings.on_key["k"] =
   xplr_original.config.modes.builtin.default.key_bindings.on_key["down"]
+
+xplr.config.modes.builtin.number.key_bindings.on_key["j"] = nil
+xplr.config.modes.builtin.number.key_bindings.on_key["i"] =
+  xplr.config.modes.builtin.number.key_bindings.on_key["up"]
+xplr.config.modes.builtin.number.key_bindings.on_key["k"] =
+  xplr.config.modes.builtin.number.key_bindings.on_key["down"]
 
 -- Move focus across multiple lines
 xplr.config.modes.builtin.default.key_bindings.on_key["I"] = {

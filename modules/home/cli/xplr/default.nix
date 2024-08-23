@@ -12,8 +12,8 @@ in {
       visual-mode = pkgs.fetchFromGitHub {
         owner = "oo-infty";
         repo = "visual-mode.xplr";
-        rev = "c0cb399b5951dfc6759d00105d2c6e1c2c5e3cc0";
-        hash = "sha256-ISjwzarbj6kK1nDfkNGHqXOUG3lG5AEXDR6YphBgLmM=";
+        rev = "c2d7e333ae145b55e0c873a44ee971d2563783cd";
+        hash = "sha256-1u6XVXyDi7gwhlKix26wHXPQmDuR/ssi9zDFdq294S4=";
       };
     };
   };
