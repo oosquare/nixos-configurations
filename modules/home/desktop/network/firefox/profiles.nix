@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, root, ... }:
 
 let
   flags = config.flags.packages.desktop.network;
@@ -20,7 +20,7 @@ in {
               ];
             };
 
-            icon = "github";
+            icon = root + /assets/icons/github.png;
             definedAliases = [ "@gh" ];
           };
 
