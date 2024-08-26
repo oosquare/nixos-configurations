@@ -80,6 +80,7 @@ in {
 
     programs.plasma.kwin.virtualDesktops = rec {
       number = 8;
+      rows = 1;
       names = builtins.map (x: "Desktop ${builtins.toString x}") (lib.range 1 number);
     };
 
