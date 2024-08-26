@@ -26,30 +26,30 @@
   # Filesystem
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/1a99a496-b530-4604-b8fd-4277246f4d21";
+      device = "/dev/disk/by-uuid/9f113474-094d-4999-872d-e6a11c9dd18c";
       fsType = "btrfs";
       options = [ "subvol=@rootfs" "compress=zstd" ];
     };
 
     "/home" = {
-      device = "/dev/disk/by-uuid/1a99a496-b530-4604-b8fd-4277246f4d21";
+      device = "/dev/disk/by-uuid/9f113474-094d-4999-872d-e6a11c9dd18c";
       fsType = "btrfs";
       options = [ "subvol=@home" "compress=zstd" ];
     };
 
     "/efi" = {
-      device = "/dev/disk/by-uuid/54F4-0F5C";
+      device = "/dev/disk/by-uuid/1405-19A0";
       fsType = "vfat";
     };
 
     "/nix" = {
-      device = "/dev/disk/by-uuid/1a99a496-b530-4604-b8fd-4277246f4d21";
+      device = "/dev/disk/by-uuid/9f113474-094d-4999-872d-e6a11c9dd18c";
       fsType = "btrfs";
       options = [ "subvol=@nix" "compress=zstd" "noatime" ];
     };
   };
 
-  swapDevices = [ { device = "/dev/disk/by-uuid/eb6c6178-6a0e-4a7e-a26e-9be4c3555d04"; } ];
+  swapDevices = [ { device = "/dev/disk/by-uuid/0f704ca8-4848-4bdb-9f5b-c03058071639"; } ];
 
   boot.tmp = {
     useTmpfs = true;
