@@ -38,7 +38,7 @@
     };
 
     "/efi" = {
-      device = "/dev/disk/by-uuid/1405-19A0";
+      device = "/dev/disk/by-uuid/DDD6-F410";
       fsType = "vfat";
     };
 
