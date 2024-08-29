@@ -13,19 +13,7 @@
     };
     packages = {
       desktop = {
-        environment = {
-          gnome = {
-            enable = false;
-          };
-
-          plasma = {
-            enable = true;
-          };
-
-          hyprland = {
-            enable = true;
-          };
-        };
+        environment.plasma.enable = true;
 
         communication.enable = true;
         i18n.enable = true;
