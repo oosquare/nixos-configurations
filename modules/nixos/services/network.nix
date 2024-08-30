@@ -8,7 +8,7 @@ in {
 
     services.tailscale = {
       enable = true;
-      authKeyFile = config.age.secrets."tailscale-auth-oo-laptop.age".path;
+      authKeyFile = config.age.secrets."tailscale-auth.age".path;
     };
   };
 }

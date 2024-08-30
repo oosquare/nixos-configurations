@@ -1,12 +1,15 @@
-{ config, lib, pkgs, constants, ... }:
+{ config, lib, pkgs, constants, root, ... }:
 
 {
-  imports = [ ../../secrets ];
-
   age.rekey = {
     hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGXSkWOJfTAOScc9ELER7v/WmL38Ro8uNAC5NGrIbAYI";
     masterIdentities = [ ../../secrets/identities/master-identity.age ];
     storageMode = "local";
-    localStorageDir = ../../secrets/rekeyed/${constants.hostname};
+    localStorageDir = root + /secrets/rekeyed/${constants.hostname};
+  };
+
+  age.secrets = {
+    "github-cli-auth.age".rekeyFile = root + /secrets/github-cli-auth-oo-laptop.age;
+    "tailscale-auth.age".rekeyFile = root + /secrets/tailscale-auth-oo-laptop.age;
   };
 }
