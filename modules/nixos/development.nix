@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, constants, ... }:
 
 let
   flags = config.flags.packages.development;
@@ -9,5 +9,12 @@ in {
       nix-output-monitor
       nvd
     ];
+
+    programs.wireshark = {
+      enable = true;
+      package = pkgs.wireshark;
+    };
+
+    users.users.${constants.username}.extraGroups = [ "wireshark" ];
   };
 }
