@@ -8,7 +8,7 @@ in {
       {
         description = "Transparent Exclude";
         match = {
-          window-class = { type = "regex"; value = "firefox|Alacritty"; };
+          window-class = { type = "regex"; value = "firefox|Alacritty|LibreOffice"; };
         };
         apply = {
           opacityactive = { value = "100"; apply = "force"; };

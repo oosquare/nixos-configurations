@@ -5,6 +5,7 @@ let
 in {
   config = lib.mkIf flags.enable {
     home.packages = with pkgs; [
+      libreoffice-qt
       logseq
       newsflash
       inputs.to-concentrate.packages.${pkgs.system}.to-concentrate
