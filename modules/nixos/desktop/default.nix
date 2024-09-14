@@ -30,6 +30,8 @@ in {
         noto-fonts-color-emoji
         (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
       ]);
+
+      fontDir.enable = true;
     };
   };
 }
