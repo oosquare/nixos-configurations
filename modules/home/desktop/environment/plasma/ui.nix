@@ -36,6 +36,10 @@ in {
             "preferred://filemanager"
             "applications:Alacritty.desktop"
             "preferred://browser"
+            "applications:thunderbird.desktop"
+            "applications:obsidian.desktop"
+            "applications:code.desktop"
+            "applications:idea-community.desktop"
           ];
         })
         (tag "systemTray" {

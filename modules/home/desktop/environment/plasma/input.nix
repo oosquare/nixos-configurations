@@ -29,6 +29,8 @@ in {
         productId = "12999";
         naturalScroll = true;
         tapToClick = true;
+        rightClickMethod = "twoFingers";
+        scrollMethod = "twoFingers";
       };
     };
   };
