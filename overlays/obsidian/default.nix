@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 final: prev: {
-  vscode = prev.vscode.override {
+  obsidian = prev.obsidian.override {
     commandLineArgs = "--disable-gpu";
   };
 }
