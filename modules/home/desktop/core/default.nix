@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   flags = config.flags.packages.desktop;
@@ -20,8 +20,7 @@ in {
     home.packages = with pkgs; [
       keepassxc
       libnotify
-    ] ++ (with inputs.nur-self.packages.${pkgs.system}; [
-      fcitx5-fluent-dark
-    ]);
+      fcitx5-fluent
+    ];
   };
 }
