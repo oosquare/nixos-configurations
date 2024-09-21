@@ -5,10 +5,14 @@ let
 in {
   config = lib.mkIf flags.enable {
     home.packages = with pkgs; [
-      inputs.to-concentrate.packages.${pkgs.system}.to-concentrate
       libreoffice-qt
       newsflash
       obsidian
     ];
+
+    services.to-concentrate = {
+      enable = true;
+      package = inputs.to-concentrate.packages.${pkgs.system}.to-concentrate;
+    };
   };
 }

@@ -107,7 +107,10 @@
                 home-manager.users.${constants.username} = import ./home/${hostname};
                 home-manager.extraSpecialArgs = { inherit inputs constants root; };
                 home-manager.backupFileExtension = "bak";
-                home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
+                home-manager.sharedModules = [
+                  inputs.plasma-manager.homeManagerModules.plasma-manager
+                  inputs.to-concentrate.homeManagerModules.to-concentrate
+                ];
               }
     
               inputs.nur.nixosModules.nur
@@ -134,7 +137,10 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = { inherit inputs constants root; };
-                home-manager.sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
+                home-manager.sharedModules = [
+                  inputs.plasma-manager.homeManagerModules.plasma-manager
+                  inputs.to-concentrate.homeManagerModules.to-concentrate
+                ];
               }
 
               inputs.nur.nixosModules.nur
