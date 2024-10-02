@@ -8,5 +8,7 @@ in {
       vscode
       jetbrains.idea-community
     ];
+
+    programs.java.enable = true;
   };
 }
