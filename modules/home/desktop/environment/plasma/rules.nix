@@ -6,18 +6,10 @@ in {
   config = lib.mkIf flags.enable {
     programs.plasma.window-rules = [
       {
-        description = "Transparent Exclude";
-        match = {
-          window-class = { type = "regex"; value = "firefox|Alacritty|LibreOffice"; };
-        };
-        apply = {
-          opacityactive = { value = "100"; apply = "force"; };
-          opacityinactive = { value = "100"; apply = "force"; };
-        };
-      }
-      {
         description = "Transparent";
-        match = {};
+        match = {
+          window-class = { type = "regex"; value = "systemsettings|org.kde.plasma-systemmonitor"; };
+        };
         apply = {
           opacityactive = { value = "85"; apply = "force"; };
           opacityinactive = { value = "85"; apply = "force"; };

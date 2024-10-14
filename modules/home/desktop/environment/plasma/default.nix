@@ -13,6 +13,7 @@ in {
 
   config = lib.mkIf flags.enable {
     programs.plasma.enable = true;
+    # programs.plasma.overrideConfig = true;
 
     home.activation.deleteGtkrc2Backup = lib.hm.dag.entryAfter [ "configure-plasma" ] ''
       run rm $HOME/.gtkrc-2.0.bak || true

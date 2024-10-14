@@ -75,6 +75,7 @@
 
   hardware.nvidia = {
     open = false;
+    nvidiaSettings = false;
     modesetting.enable = true;
 
     prime = {

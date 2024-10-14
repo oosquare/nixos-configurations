@@ -14,7 +14,6 @@ in {
       kate
       khelpcenter
       konsole
-      kwrited
     ];
   };
 }
