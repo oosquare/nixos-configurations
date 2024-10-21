@@ -40,6 +40,7 @@ in {
             "applications:obsidian.desktop"
             "applications:code.desktop"
             "applications:idea-community.desktop"
+            "applications:org.kde.elisa.desktop"
           ];
         })
         (tag "systemTray" {

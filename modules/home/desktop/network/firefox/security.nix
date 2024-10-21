@@ -255,7 +255,7 @@ let
     "privacy.clearOnShutdown.history" = true;
     "privacy.clearOnShutdown_v2.cache" = true;
     "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = true;
-        # SANITIZE ON SHUTDOWN: RESPECTS "ALLOW" SITE EXCEPTIONS FF103+
+    # SANITIZE ON SHUTDOWN: RESPECTS "ALLOW" SITE EXCEPTIONS FF103+
     # set "Cookies" and "Site Data" to clear on shutdown
     "privacy.clearOnShutdown.cookies" = true;
     "privacy.clearOnShutdown.offlineApps" = true;
@@ -295,8 +295,6 @@ in {
         Fingerprinting = true;
       };
       DisablePocket = true;
-      DisableFirefoxAccounts = true;
-      DisableAccounts = true;
       DisableFirefoxScreenshots = true;
       DontCheckDefaultBrowser = true;
       OverrideFirstRunPage = "";
