@@ -33,7 +33,7 @@
     nur.url = "github:nix-community/NUR";
 
     nur-self = {
-      url = "github:oo-infty/nur-packages/master";
+      url = "github:oosquare/nur-packages/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -65,7 +65,7 @@
     };
 
     to-concentrate = {
-      url = "github:oo-infty/to-concentrate";
+      url = "github:oosquare/to-concentrate";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };

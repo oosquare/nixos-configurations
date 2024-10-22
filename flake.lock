@@ -412,13 +412,13 @@
       "locked": {
         "lastModified": 1728287244,
         "narHash": "sha256-MMjD9/HQkzu87P+Tq6EmjNdX/hCsbcfPxUTq6rlxH3U=",
-        "owner": "oo-infty",
+        "owner": "oosquare",
         "repo": "nur-packages",
         "rev": "2d744294d0562238fd0ac89772e737602d161fa5",
         "type": "github"
       },
       "original": {
-        "owner": "oo-infty",
+        "owner": "oosquare",
         "ref": "master",
         "repo": "nur-packages",
         "type": "github"
@@ -581,13 +581,13 @@
       "locked": {
         "lastModified": 1726901940,
         "narHash": "sha256-yW0mCObvxqksGkfPSWlgVT8QjFGxpTBjLeCZSxFnzXg=",
-        "owner": "oo-infty",
+        "owner": "oosquare",
         "repo": "to-concentrate",
         "rev": "7c4e9a3cc6c16feda8885c0da0953779b1c4aa94",
         "type": "github"
       },
       "original": {
-        "owner": "oo-infty",
+        "owner": "oosquare",
         "repo": "to-concentrate",
         "type": "github"
       }

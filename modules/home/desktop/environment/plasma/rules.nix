@@ -8,7 +8,7 @@ in {
       {
         description = "Transparent";
         match = {
-          window-class = { type = "regex"; value = "systemsettings|org.kde.plasma-systemmonitor"; };
+          window-class = { type = "regex"; value = "org.kde.plasmashell|systemsettings|org.kde.plasma-systemmonitor"; };
         };
         apply = {
           opacityactive = { value = "85"; apply = "force"; };
