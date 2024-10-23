@@ -6,10 +6,7 @@ in {
   programs.cava.enable = true;
 
   programs.cava.settings = {
-    input = {
-      method = "fifo";
-      source = "/tmp/mpd-visualizer-data.fifo";
-    };
+    input.method = "pipewire";
 
     output = {
       channels = "mono";
