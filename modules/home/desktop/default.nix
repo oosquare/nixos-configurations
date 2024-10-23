@@ -2,12 +2,11 @@
 
 {
   imports = [
+    ./communication.nix
     ./core
     ./environment
     ./multimedia
     ./network
-
-    ./communication.nix
     ./production.nix
   ];
 }

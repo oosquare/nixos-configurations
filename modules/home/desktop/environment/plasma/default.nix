@@ -2,6 +2,7 @@
 
 let
   flags = config.flags.packages.desktop.environment.plasma;
+  cfg = config.programs.plasma;
 in {
   imports = [
     ./input.nix
@@ -11,12 +12,10 @@ in {
     ./ui.nix
   ];
 
-  config = lib.mkIf flags.enable {
-    programs.plasma.enable = true;
-    # programs.plasma.overrideConfig = true;
+  programs.plasma.enable = flags.enable;
+  # programs.plasma.overrideConfig = true;
 
-    home.activation.deleteGtkrc2Backup = lib.hm.dag.entryAfter [ "configure-plasma" ] ''
-      run rm $HOME/.gtkrc-2.0.bak || true
-    '';
-  };
+  home.activation.deleteGtkrc2Backup = lib.mkIf cfg.enable (lib.hm.dag.entryAfter [ "configure-plasma" ] ''
+    run rm $HOME/.gtkrc-2.0.bak || true
+  '');
 }

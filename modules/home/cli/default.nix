@@ -4,14 +4,13 @@ let
   flags = config.flags.packages.cli;
 in {
   imports = [
+    ./atuin.nix
     ./fzf
+    ./gh.nix
+    ./git.nix
     ./scripts
     ./xplr
     ./zellij
-
-    ./atuin.nix
-    ./git.nix
-    ./gh.nix
   ];
 
   config = lib.mkIf flags.enable {

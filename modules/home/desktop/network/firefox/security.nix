@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }:
 
 let
-  flags = config.flags.packages.desktop.network;
-
   securitySettings = {
     "browser.download.open_pdf_attachments_inline" = true;
 
@@ -282,26 +280,23 @@ let
     "privacy.sanitize.timeSpan" = 0;
   };
 in {
-  config = lib.mkIf flags.enable {
-    programs.firefox.policies = {
-      BlockAboutConfig = true;
+  programs.firefox.policies = {
+    BlockAboutConfig = true;
 
-      DisableTelemetry = true;
-      DisableFirefoxStudies = true;
-      EnableTrackingProtection = {
-        Value = true;
-        Locked = true;
-        Cryptomining = true;
-        Fingerprinting = true;
-      };
-      DisablePocket = true;
-      DisableFirefoxScreenshots = true;
-      DontCheckDefaultBrowser = true;
-      OverrideFirstRunPage = "";
-      OverridePostUpdatePage = "";
+    DisableTelemetry = true;
+    DisableFirefoxStudies = true;
+    EnableTrackingProtection = {
+      Value = true;
+      Locked = true;
+      Cryptomining = true;
+      Fingerprinting = true;
     };
-
-    programs.firefox.profiles.default.settings = securitySettings;
+    DisablePocket = true;
+    DisableFirefoxScreenshots = true;
+    DontCheckDefaultBrowser = true;
+    OverrideFirstRunPage = "";
+    OverridePostUpdatePage = "";
   };
-}
 
+  programs.firefox.profiles.default.settings = securitySettings;
+}

@@ -2,20 +2,19 @@
 
 let
   flags = config.flags.packages.cli;
+  cfg = config.programs.zellij;
 in {
-  config = lib.mkIf flags.enable {
-    programs.zellij.enable = true;
+  programs.zellij.enable = flags.enable;
   
-    home.file.".config/zellij/config.kdl".source = pkgs.substitute {
-      src = ./config.kdl;
-      substitutions = [
-        "--replace-fail" "@@%%xdg-config-home%%@@" "${config.xdg.configHome}"
-      ];
-    };
-  
-    home.file.".config/zellij/layouts" = {
-      source = ./layouts;
-      recursive = true;
-    };
+  home.file.".config/zellij/config.kdl".source = lib.mkIf cfg.enable (pkgs.substitute {
+    src = ./config.kdl;
+    substitutions = [
+      "--replace-fail" "@@%%xdg-config-home%%@@" "${config.xdg.configHome}"
+    ];
+  });
+
+  home.file.".config/zellij/layouts" = lib.mkIf cfg.enable {
+    source = ./layouts;
+    recursive = true;
   };
 }

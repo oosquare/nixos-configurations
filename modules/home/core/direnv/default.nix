@@ -2,17 +2,16 @@
 
 let
   flags = config.flags.packages.core;
+  cfg = config.programs.direnv;
 in {
-  config = lib.mkIf flags.enable {
-    programs.direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-  
-      stdlib = builtins.readFile ./stdlib.sh;
-    };
-  
-    home.sessionVariables = {
-      DIRENV_LOG_FORMAT = "";
-    };
+  programs.direnv = {
+    enable = flags.enable;
+    nix-direnv.enable = true;
+
+    stdlib = builtins.readFile ./stdlib.sh;
+  };
+
+  home.sessionVariables = lib.mkIf cfg.enable {
+    DIRENV_LOG_FORMAT = "";
   };
 }

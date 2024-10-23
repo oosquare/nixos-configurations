@@ -9,7 +9,5 @@ in {
     ./window.nix
   ];
 
-  config = lib.mkIf flags.enable {
-    gtk.enable = true;
-  };
+  gtk.enable = flags.enable;
 }

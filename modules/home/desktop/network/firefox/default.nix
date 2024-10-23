@@ -9,12 +9,10 @@ in {
     ./security.nix
   ];
 
-  config = lib.mkIf flags.enable {
-    programs.firefox.enable = true;
+  programs.firefox.enable = flags.enable;
 
-    programs.firefox.languagePacks = [ "zh-CN" "en-US" ];
-    programs.firefox.nativeMessagingHosts = with pkgs; [
-      kdePackages.plasma-browser-integration
-    ];
-  };
+  programs.firefox.languagePacks = [ "zh-CN" "en-US" ];
+  programs.firefox.nativeMessagingHosts = with pkgs; [
+    kdePackages.plasma-browser-integration
+  ];
 }

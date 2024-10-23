@@ -5,7 +5,6 @@ let
 in {
   imports = [
     ./cava.nix
-    ./mpd-mpris.nix
     ./mpd.nix
     ./mpv.nix
     ./ncmpcpp.nix

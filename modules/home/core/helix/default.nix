@@ -10,18 +10,16 @@ let
   else
     builtins.abort "Unreachable";
 in {
-  config = lib.mkIf flags.enable {
-    programs.helix.enable = true;
-  
-    programs.helix.settings = {
-      theme = colorscheme;
-      editor = import ./editor.nix args;
-      keys = import ./keybindings.nix args;
-    };
-  
-    programs.helix.themes = {
-      one-dark-transparent = import ./themes/one-dark-transparent.nix args;
-      tokyo-night-storm-transparent = import ./themes/tokyo-night-storm-transparent.nix args;
-    };
+  programs.helix.enable = flags.enable;
+
+  programs.helix.settings = {
+    theme = colorscheme;
+    editor = import ./editor.nix args;
+    keys = import ./keybindings.nix args;
+  };
+
+  programs.helix.themes = {
+    one-dark-transparent = import ./themes/one-dark-transparent.nix args;
+    tokyo-night-storm-transparent = import ./themes/tokyo-night-storm-transparent.nix args;
   };
 }

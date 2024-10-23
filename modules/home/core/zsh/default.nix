@@ -12,13 +12,13 @@ in {
     };
   };
 
-  config = lib.mkIf flags.enable {
-    home.packages = [
+  config = {
+    home.packages = lib.mkIf cfg.enable [
       (pkgs.writeScriptBin "git-branch-format" (builtins.readFile ./git-branch-format.sh))
     ];
 
     programs.zsh = {
-      enable = true;
+      enable = flags.enable;
       autosuggestion.enable = true;
       enableCompletion = true;
       syntaxHighlighting.enable = true;
