@@ -12,9 +12,9 @@
 
     mice = lib.singleton {
       enable = true;
-      name = "CX Gaming Mouse";
-      vendorId = "9639";
-      productId = "64104";
+      name = "Compx 2.4G Receiver Mouse";
+      vendorId = "13652";
+      productId = "64512";
       acceleration = 0.4;
       accelerationProfile = "none";
     };

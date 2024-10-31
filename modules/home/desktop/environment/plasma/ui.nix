@@ -24,7 +24,7 @@
     widgets = let
       tag = name: value: { ${name} = value; };
     in [
-      (tag "kickoff" {
+      (tag "kicker" {
         icon = "nix-snowflake-white";
       })
       (tag "iconTasks" {
@@ -55,6 +55,7 @@
 
           hidden = [
             "blueman"
+            "Elisa"
             "org.kde.plasma.bluetooth"
             "org.kde.plasma.keyboardlayout"
             "org.kde.plasma.clipboard"

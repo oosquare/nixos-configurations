@@ -18,7 +18,7 @@ in {
     keyboard.bindings = import ./keybindings.nix args;
     colors = import ./themes/${colorscheme}.nix args;
 
-    shell = {
+    terminal.shell = {
       program = "${pkgs.zsh}/bin/zsh";
       args = [ "--no-rcs" "-c" "sleep 0.01; zellij" ];
     };
