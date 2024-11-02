@@ -21,5 +21,12 @@ in {
     common_prefix = [
       "sudo"
     ];
+
+    history_filter = [
+      ''^\\.*''
+      ''^git reset.*''
+      ''^rm.*''
+      ''^ .*''
+    ];
   };
 }
