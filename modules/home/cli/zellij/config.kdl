@@ -122,8 +122,8 @@ keybinds clear-defaults=true {
                 layout "@@%%xdg-config-home%%@@/zellij/layouts/ide.kdl"
             }
         }
-        bind "Alt {" { GoToPreviousTab; }
-        bind "Alt }" { GoToNextTab; }
+        bind "Alt U" { GoToPreviousTab; }
+        bind "Alt O" { GoToNextTab; }
     }
     shared_except "normal" "locked" {
         bind "Enter" "Esc" { SwitchToMode "Normal"; }

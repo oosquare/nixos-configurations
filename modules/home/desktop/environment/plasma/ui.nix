@@ -103,7 +103,7 @@
   };
 
   programs.plasma.configFile = {
-    kdeglobals.KDE.AnimationDurationFactor = 0.5;
+    kdeglobals.KDE.AnimationDurationFactor = 0.8;
 
     kwinrc.Plugins.desktopchangeosdEnabled = true;
     kwinrc.Script-desktopchangeosd.PopupHideDelay = 250;

@@ -31,8 +31,7 @@
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.config.permittedInsecurePackages = [
-    "electron-27.3.11"
-    "electron-28.3.3"
+    "electron-30.5.1"
   ];
 
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
