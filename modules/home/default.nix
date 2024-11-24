@@ -11,4 +11,5 @@
 
   services.mpd.enable = lib.mkForce false;
   programs.ncmpcpp.enable = lib.mkForce false;
+  programs.cava.enable = lib.mkForce false;
 }
