@@ -113,7 +113,7 @@
                 ];
               }
     
-              inputs.nur.nixosModules.nur
+              inputs.nur.modules.nixos.default
               inputs.agenix.nixosModules.default
               inputs.agenix-rekey.nixosModules.default
             ];
@@ -143,7 +143,7 @@
                 ];
               }
 
-              inputs.nur.nixosModules.nur
+              inputs.nur.modules.nixos.default
               inputs.agenix-rekey.nixosModules.default
             ];
           };

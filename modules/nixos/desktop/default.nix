@@ -28,7 +28,7 @@ in {
         cascadia-code
       ]) ++ lib.optionals cfg.emoji (with pkgs; [
         noto-fonts-color-emoji
-        (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+        nerd-fonts.symbols-only
       ]);
 
       fontDir.enable = true;
