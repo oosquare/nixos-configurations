@@ -19,7 +19,7 @@
   users.users.${constants.username} = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "networkmanager" "dialout" ];
+    extraGroups = [ "wheel" "networkmanager" "dialout" "docker" ];
     openssh.authorizedKeys.keys = [
       # oo-matepad
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGsW8RQD1WfSg1N0uriuTO6B10T7LMnRUMDhQiKr//G7 nix-on-droid@localhost"

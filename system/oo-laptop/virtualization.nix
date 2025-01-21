@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  virtualisation.podman = {
+  virtualisation.docker = {
     enable = true;
-    defaultNetwork.settings.dns_enabled = true;
+    storageDriver = "btrfs";
   };
 }
