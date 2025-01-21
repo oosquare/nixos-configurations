@@ -44,6 +44,8 @@ in {
         gs = "git status";
         gl = "git log --pretty='format:%C(yellow)%h %C(blue)%ad %C(white)%s' --graph --date=short";
         gd = "git diff HEAD";
+        gp = "git push";
+        gpr = "git pull --rebase";
         rm = "echo 'rm: command is disabled for security'";
         tsp = "trash-put";
         x = ''__XPLR_CD_OUTPUT=$(xplr); cd "$__XPLR_CD_OUTPUT" > /dev/null 2>&1 || echo $__XPLR_CD_OUTPUT; unset __XPLR_CD_OUTPUT'';
