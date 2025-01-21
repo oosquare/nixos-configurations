@@ -16,6 +16,8 @@ in {
       "nix"
       "cargo"
       "git"
+      "./gradlew"
+      "./mvnw"
     ];
 
     common_prefix = [
