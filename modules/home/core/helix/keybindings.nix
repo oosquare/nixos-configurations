@@ -13,7 +13,7 @@
     I = [ "move_line_up" "move_line_up" "move_line_up" "move_line_up" "move_line_up" ];
     W = ":write";
     E = ":quit";
-    x = [ "move_prev_word_end" "move_next_word_start" "trim_selections" ];
+    x = "@miw";
     X = "extend_line_below";
     # Workaround for using C-A-i in zellij
     A-tab = [ "extend_to_line_bounds" "delete_selection" "move_line_up" "paste_before" ];
