@@ -47,12 +47,4 @@
   indent-guides.render = true;
 
   lsp.display-messages = true;
-
-  end-of-line-diagnostics = "hint";
-
-  inline-diagnostics = {
-    cursor-line = "error";
-    other-lines = "error"; 
-    max-diagnostics = 5;
-  };
 }
