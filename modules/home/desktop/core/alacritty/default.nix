@@ -13,7 +13,7 @@ in {
   programs.alacritty.enable = flags.enable;
 
   programs.alacritty.settings = {
-    font.size = 10;
+    font.size = 10.5;
     selection.semantic_escape_chars = '',.?│`|:;"' ()[]{}<>	!@#$%^&*-=+/~'';
     keyboard.bindings = import ./keybindings.nix args;
     colors = import ./themes/${colorscheme}.nix args;
