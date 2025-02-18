@@ -102,7 +102,6 @@
               ./system/${hostname}
     
               inputs.home-manager.nixosModules.home-manager {
-                home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.users.${constants.username} = import ./home/${hostname};
                 home-manager.extraSpecialArgs = { inherit inputs constants root; };
@@ -134,7 +133,6 @@
               {
                 home-manager.config = ./home/${hostname};
                 home-manager.backupFileExtension = "bak";
-                home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = { inherit inputs constants root; };
                 home-manager.sharedModules = [
@@ -143,14 +141,13 @@
                 ];
               }
 
-              inputs.nur.modules.nixos.default
               inputs.agenix-rekey.nixosModules.default
             ];
           };
 
         agenix-rekey = inputs.agenix-rekey.configure {
           userFlake = self;
-          nodes = self.nixosConfigurations // self.nixOnDroidConfigurations;
+          nixosConfigurations = self.nixosConfigurations // self.nixOnDroidConfigurations;
         };
       };
     };

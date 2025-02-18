@@ -9,6 +9,7 @@
   };
 
   age.secrets = {
+    "crates-io-auth.age".rekeyFile = root + /secrets/crates-io-auth-oo-laptop.age;
     "github-cli-auth.age".rekeyFile = root + /secrets/github-cli-auth-oo-laptop.age;
     "tailscale-auth.age".rekeyFile = root + /secrets/tailscale-auth-oo-laptop.age;
   };
