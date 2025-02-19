@@ -5,6 +5,9 @@ let
   cfg = config.programs.zellij;
 in {
   programs.zellij.enable = flags.enable;
+  programs.zellij.enableBashIntegration = false;
+  programs.zellij.enableZshIntegration = false;
+  programs.zellij.enableFishIntegration = false;
   
   home.file.".config/zellij/config.kdl".source = lib.mkIf cfg.enable (pkgs.substitute {
     src = ./config.kdl;
