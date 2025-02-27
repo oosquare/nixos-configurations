@@ -8,7 +8,6 @@ in {
       libreoffice-qt
       newsflash
       obsidian
-      calibre
     ];
 
     services.to-concentrate = {
