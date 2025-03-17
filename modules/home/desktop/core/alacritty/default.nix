@@ -30,8 +30,8 @@ in {
       startup_mode = "Maximized";
 
       padding = {
-        x = 4;
-        y = 0;
+        x = 16;
+        y = 10;
       };
     };
   };
