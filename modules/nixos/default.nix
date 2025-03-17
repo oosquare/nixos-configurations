@@ -30,10 +30,6 @@
   nixpkgs.overlays = import ../../overlays args;
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-30.5.1"
-  ];
-
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
   environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
   nix.settings.nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";

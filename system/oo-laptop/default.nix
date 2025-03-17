@@ -34,7 +34,7 @@
     # startup time of EGL-based softwares in machines with hybrid graphics
     # under Wayland.
     __EGL_VENDOR_LIBRARY_FILENAMES =
-      "${pkgs.mesa.drivers}/share/glvnd/egl_vendor.d/50_mesa.json";
+      "${pkgs.mesa}/share/glvnd/egl_vendor.d/50_mesa.json";
   };
 
   system.stateVersion = "24.05";
