@@ -5,7 +5,7 @@
     id = 0;
     isDefault = true;
     search = {
-      default = "Google";
+      default = "google";
       force = true;
       engines = {
         "GitHub" = {
@@ -72,7 +72,7 @@
           definedAliases = [ "@nw" ];
         };
 
-        "Bing".metaData.hidden = true;
+        bing.metaData.hidden = true;
       };
     };
   };

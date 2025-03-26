@@ -159,3 +159,4 @@ theme "tokyo-night-storm"
 copy_on_select false
 pane_frames false
 default_layout "custom-default"
+show_startup_tips false
